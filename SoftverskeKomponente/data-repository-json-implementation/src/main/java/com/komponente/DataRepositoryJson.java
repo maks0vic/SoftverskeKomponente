@@ -4,12 +4,22 @@ import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class DataRepositoryJson implements DataRepository{
-	//private ObjectMapper objectMapper = new ObjectMapper();
+	ObjectMapper objectMapper = new ObjectMapper();
 
 	@Override
 	public void save(String collection, Object object) {
+		try {
+			objectMapper.writeValue( new File("file.json"), object);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("Problem with saving document");
+		}
+		
+	//public void save(String collection, Object object) {
 		/*try {
 			List<Object> objects = objectMapper.readValue(new File(collection), new TypeReference<List<Object>>() {
 			});

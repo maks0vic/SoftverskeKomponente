@@ -12,6 +12,11 @@
 			<artifactId>data-repository-specification</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.11.3</version>
+        </dependency>
 	</dependencies>
 
 
@@ -28,5 +33,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
