@@ -29,4 +29,11 @@ public interface  DataRepository  {
 	 * @return list off objects from specified collection
 	 */
 	public <T> List<T> findAll(String collection, Class<T> type);
+	
+	
+	/*public Storage createStorage ( String path) {
+		
+	}
+	
+	public Storage getStorage (String path)*/
 }
