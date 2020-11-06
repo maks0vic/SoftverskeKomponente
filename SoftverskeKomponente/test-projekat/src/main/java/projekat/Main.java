@@ -7,11 +7,13 @@ import java.util.Map;
 
 import com.komponente.*;
 
+import view.MainFrame;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
-		
+	/*	
 		Map <String, String> enMapa1 = new HashMap<>();
 		enMapa1.put("en1key1", "en1value1");
 		enMapa1.put("en1key2", "en1value2");
@@ -39,7 +41,9 @@ public class Main {
 		System.out.println(jsonStorage.getStorageType());
 		
 		
+		*/
 		
+		MainFrame.getInstance();
 		
 	}
 
