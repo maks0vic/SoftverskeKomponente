@@ -1,5 +1,6 @@
 package com.komponente;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Entity {
@@ -19,6 +20,7 @@ public class Entity {
 		super();
 		this.name = name;
 		this.ID = ID;
+		mapa = new HashMap<>();
 	}
 
 	public Entity(String name, String ID, Map<String, String> mapa) {

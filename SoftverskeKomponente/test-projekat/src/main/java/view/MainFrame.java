@@ -1,22 +1,38 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
+import javax.swing.JToolBar;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.html.HTMLDocument.Iterator;
+
+import com.komponente.Entity;
 
 public class MainFrame extends JFrame{
 	
 	private static MainFrame instance = null;
-	private JSplitPane split;
 	private JScrollPane scroll;
-	private JPanel buttonPanel;
 	private JTable table;
 	private Dimension screenSize;
+	private JButton addEntityButton;
+	private JButton deleteSelectedEntitiesButton;
+	private JButton searchButton;
+	private JButton sortButton;
+	private JToolBar toolbar;
+	private DefaultTableModel tableModel;
 	
 	private MainFrame() {
 		setSize(800,600);
@@ -27,14 +43,58 @@ public class MainFrame extends JFrame{
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setTitle("Projekat");
 		
-		table = new JTable();
+		addEntityButton = new JButton("Add");
+		deleteSelectedEntitiesButton = new JButton("Delete selected");
+		searchButton = new JButton("Search");
+		sortButton = new JButton("Sort");
+		toolbar = new JToolBar();
+		
+		toolbar.addSeparator(new Dimension(30, 20));
+		toolbar.add(addEntityButton);
+		toolbar.addSeparator(new Dimension(30, 20));
+		toolbar.add(deleteSelectedEntitiesButton);
+		toolbar.addSeparator(new Dimension(30, 20));
+		toolbar.add(searchButton);
+		toolbar.addSeparator(new Dimension(30, 20));
+		toolbar.add(sortButton);
+		toolbar.setOrientation(javax.swing.SwingConstants.VERTICAL);
+		
+		toolbar.setFloatable(false);
+		toolbar.setPreferredSize(new Dimension(200,200));
+		add(toolbar, BorderLayout.WEST);
+		
+		tableModel = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		};
+		table = new JTable(tableModel);
+		
+		tableModel.addColumn("Entity name");
+		tableModel.addColumn("Entity ID");
+		tableModel.addColumn("Key - value map");
+		tableModel.addColumn("Nested entities");
+		table.setColumnSelectionAllowed(false);
+		table.getTableHeader().setReorderingAllowed(false);
+		table.getTableHeader().setResizingAllowed(false);
+		table.getColumnModel().getColumn(2).setMinWidth(400);
+		table.getColumnModel().getColumn(3).setMinWidth(400);
+		
+		
 		scroll = new JScrollPane(table);
-		buttonPanel = new JPanel();
 		
-		split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, buttonPanel, scroll);
-		split.setDividerLocation((int)(this.screenSize.getWidth()/6));
+		add(scroll);
 		
-		add(split);
+		Entity e = new Entity("Entity1", "ID : 123");
+		e.addToMap("key1", "value1");
+		e.addToMap("key2", "value2");
+		e.addToMap("key3", "value3");
+		
+		addToTable(e);
+		addToTable(e);
+		addToTable(e);
 		
 		validate();
 	}
@@ -42,5 +102,31 @@ public class MainFrame extends JFrame{
 	public static MainFrame getInstance() {
 		if(instance == null) instance = new MainFrame();
 		return instance;
+	}
+	
+	public void addToTable(Entity e) {
+		List<String> list = new ArrayList<>();
+		list.add(e.getName());
+		list.add(e.getID());
+		String mapa = "";
+		if(!e.getMapa().isEmpty()) {
+			for (String key : e.getMapa().keySet()) {
+			    mapa += key + ":" + e.getMapa().get(key) + " , ";
+			}
+		}
+		if(!mapa.equals(""))mapa = mapa.substring(0, mapa.length() - 2);
+
+		list.add(mapa);
+		tableModel.addRow(list.toArray());
+	}
+	
+	public void removeFromTable(Entity e) {
+		for(int i = 0; i < tableModel.getRowCount(); i++) {
+			if(e.getID().equals(tableModel.getValueAt(i, 1)))tableModel.removeRow(i);
+		}
+	}
+	
+	private void initActionListeners() {
+		
 	}
 }
