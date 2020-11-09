@@ -3,12 +3,11 @@ package com.komponente;
 import java.util.ArrayList;
 import java.util.List;
 
-public class File {
-	private int maxEntities;
+public class MyFile {
 	private String fileName;
 	private List<Entity> entityList;
 	
-	public File(String fileName) {
+	public MyFile(String fileName) {
 		super();
 		this.fileName = fileName;
 		entityList = new ArrayList<Entity>();
@@ -16,14 +15,6 @@ public class File {
 
 	public void addEntity (Entity en) {
 		entityList.add(en);
-	}
-
-	public int getMaxEntities() {
-		return maxEntities;
-	}
-
-	public void setMaxEntities(int maxEntities) {
-		this.maxEntities = maxEntities;
 	}
 
 	public String getFileName() {
