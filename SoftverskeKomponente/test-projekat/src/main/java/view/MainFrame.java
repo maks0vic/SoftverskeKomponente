@@ -87,14 +87,7 @@ public class MainFrame extends JFrame{
 		
 		add(scroll);
 		
-		Entity e = new Entity("Entity1", "ID : 123");
-		e.addToMap("key1", "value1");
-		e.addToMap("key2", "value2");
-		e.addToMap("key3", "value3");
 		
-		addToTable(e);
-		addToTable(e);
-		addToTable(e);
 		
 		validate();
 	}
