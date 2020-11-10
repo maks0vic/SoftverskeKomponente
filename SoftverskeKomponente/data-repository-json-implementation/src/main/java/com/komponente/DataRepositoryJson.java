@@ -17,7 +17,6 @@ public class DataRepositoryJson extends Storage{
 		super(adress);
 	}
 
-
 	public DataRepositoryJson(String adress, List<MyFile> files, String storageType, int maxEntities) {
 		super(adress, files, storageType, maxEntities);
 	}
@@ -58,36 +57,4 @@ public class DataRepositoryJson extends Storage{
 			throw new RuntimeException("Problem with loading document");
 		}
 	}
-	
-
-
-	/*@Override
-	public <T> T findById(String collection, String id, Class<T> type) {
-		return null; //brisi
-		/*try {
-			File file = new File(collection);
-			JavaType javaType = objectMapper.getTypeFactory().constructCollectionType(List.class, type);
-			List<T> objects = objectMapper.readValue(file, javaType);
-			return objects.stream().filter(object -> {
-				JsonNode josnNode = objectMapper.valueToTree(object);
-				return josnNode.get("id").asText().equals(id);
-			}).findFirst().orElse(null);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("Storage error.");
-		}
-	}
-
-	@Override
-	public <T> List<T> findAll(String collection,Class<T> type) {
-		return null;//brisi
-		try {
-			File file = new File(collection);
-			JavaType javaType = objectMapper.getTypeFactory().constructCollectionType(List.class, type);
-			return objectMapper.readValue(file, javaType);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("Storage error.");
-		}
-	}*/
 }

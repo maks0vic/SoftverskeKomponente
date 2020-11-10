@@ -15,7 +15,6 @@ import com.componente.comparators.NameComparator;
 import com.componente.comparators.Order;
 import com.componente.comparators.SortBy;
 
-
 public abstract class Storage {
 	protected String adress; 
 	private String storageType;
@@ -23,8 +22,6 @@ public abstract class Storage {
 	private List<MyFile> files;
 	private List<Entity> workingList;
 
-	
-	
 	public Storage() {
 		super();
 	}
@@ -74,7 +71,6 @@ public abstract class Storage {
 		catch (Exception e ) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void loadEntities ( ) {
@@ -131,7 +127,7 @@ public abstract class Storage {
 	public void setWorkingList(List<Entity> workingList) {
 		this.workingList = workingList;
 	} 
-	
+
 	public void sortWorkingList(SortBy sort, Order order) {
 		if(sort.equals(SortBy.NAME)) {
 			Collections.sort(workingList, new NameComparator());
@@ -149,7 +145,6 @@ public abstract class Storage {
 		
 		return toReturn;
 	}
-	
 	
 	
 }
