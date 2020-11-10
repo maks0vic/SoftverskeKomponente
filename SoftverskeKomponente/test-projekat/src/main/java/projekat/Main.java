@@ -32,13 +32,17 @@ public class Main {
 		myFile1.addEntity(en2);
 		
 		MyFile myFile2 = new MyFile("file2");
-		myFile2.addEntity(en1);
 		myFile2.addEntity(en2);
+		myFile2.addEntity(en1);		
 		
 		List<MyFile> myFileList = new ArrayList<>();
 		myFileList.add(myFile1);
 		myFileList.add(myFile2);
-		DataRepositoryJson myStorage = new DataRepositoryJson("C:\\Users\\StefanMaksovic\\git\\repository\\SoftverskeKomponente\\test-projekat\\", myFileList, "JSON", 5);		
+		
+		DataRepositoryCustom myStorage = new DataRepositoryCustom("C:\\Users\\StefanMaksovic\\git\\repository\\SoftverskeKomponente\\test-projekat\\", myFileList, "CUSTOM", 5);
+		myStorage.save(myStorage);
+		
+		/*DataRepositoryJson myStorage = new DataRepositoryJson("C:\\Users\\StefanMaksovic\\git\\repository\\SoftverskeKomponente\\test-projekat\\", myFileList, "JSON", 5);		
 		myStorage.save(myStorage);
 
 		
@@ -48,7 +52,7 @@ public class Main {
 		storage.load();
 		
 
-		MainFrame.getInstance();
+		MainFrame.getInstance();*/
 		
 	}
 

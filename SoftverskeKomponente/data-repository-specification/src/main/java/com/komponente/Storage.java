@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public abstract class Storage {
 	protected String adress; 
 	private String storageType;
@@ -17,8 +16,6 @@ public abstract class Storage {
 	private List<MyFile> files;
 	private List<Entity> workingList;
 
-	
-	
 	public Storage() {
 		super();
 	}
@@ -67,7 +64,6 @@ public abstract class Storage {
 		catch (Exception e ) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void loadEntities ( ) {
@@ -124,9 +120,4 @@ public abstract class Storage {
 	public void setWorkingList(List<Entity> workingList) {
 		this.workingList = workingList;
 	} 
-	
-	
-	
-	
-	
 }

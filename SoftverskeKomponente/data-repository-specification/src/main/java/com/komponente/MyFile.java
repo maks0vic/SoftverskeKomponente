@@ -6,10 +6,7 @@ import java.util.List;
 public class MyFile {
 	private String fileName;
 	private List<Entity> entityList;
-	
-	
-	
-	
+
 	public MyFile() {
 		super();
 	}
@@ -24,8 +21,6 @@ public class MyFile {
 		super();
 		this.entityList = entityList;
 	}
-
-
 
 	public void addEntity (Entity en) {
 		entityList.add(en);
