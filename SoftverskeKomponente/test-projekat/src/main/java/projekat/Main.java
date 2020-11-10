@@ -45,7 +45,7 @@ public class Main {
 	//	myStorage.save(myStorage);
 		
 		/*DataRepositoryJson myStorage = new DataRepositoryJson("C:\\Users\\StefanMaksovic\\git\\repository\\SoftverskeKomponente\\test-projekat\\", myFileList, "JSON", 5);		
->>>>>>> branch 'master' of https://github.com/maks0vic/data-repository-specification.git
+
 		myStorage.save(myStorage);
 
 		
