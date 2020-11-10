@@ -10,7 +10,7 @@ public class DataRepositoryYaml extends Storage{
 	}
 
 	@Override
-	public void save(String collection, Object object) {
+	public void save(Object object) {
 		// TODO Auto-generated method stub
 		
 	}
