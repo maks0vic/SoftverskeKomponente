@@ -14,7 +14,6 @@ public class Main {
 
 	public static void main(String[] args){
 		
-	
 		Map <String, String> enMapa1 = new HashMap<>();
 		enMapa1.put("en1key1", "en1value1");
 		enMapa1.put("en1key2", "en1value2");
@@ -38,17 +37,17 @@ public class Main {
 		List<MyFile> myFileList = new ArrayList<>();
 		myFileList.add(myFile1);
 		myFileList.add(myFile2);
-		DataRepositoryJson myStorage = new DataRepositoryJson("C:\\Users\\StefanMaksovic\\git\\repository\\SoftverskeKomponente\\test-projekat\\", myFileList, "JSON", 5);		
+		DataRepositoryJson myStorage = new DataRepositoryJson("/home/ivan/git/data-repository-specification/SoftverskeKomponente/test-projekat/", myFileList, "JSON", 5);		
 		myStorage.save(myStorage);
 
 		
-		String adresa = "C:\\Users\\StefanMaksovic\\git\\repository\\SoftverskeKomponente\\test-projekat\\";
+		String adresa = "/home/ivan/git/data-repository-specification/SoftverskeKomponente/test-projekat/";
 		Storage storage = new DataRepositoryJson(adresa);
 		storage.readConfig(adresa);
 		storage.load();
-		
 
 		MainFrame.getInstance();
+		
 		
 	}
 

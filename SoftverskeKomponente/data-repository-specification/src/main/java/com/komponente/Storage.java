@@ -7,7 +7,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import com.componente.comparators.IDComparator;
+import com.componente.comparators.NameComparator;
+import com.componente.comparators.Order;
+import com.componente.comparators.SortBy;
 
 
 public abstract class Storage {
@@ -39,6 +45,7 @@ public abstract class Storage {
 	}
 	
 	public void readConfig (String adress) {
+		System.out.println(adress);
 		ArrayList <String> config = new ArrayList<String>(); 	
 		try (BufferedReader br = new BufferedReader(new FileReader(adress+"config.txt"))) {			
 			String st; 			
@@ -125,7 +132,23 @@ public abstract class Storage {
 		this.workingList = workingList;
 	} 
 	
+	public void sortWorkingList(SortBy sort, Order order) {
+		if(sort.equals(SortBy.NAME)) {
+			Collections.sort(workingList, new NameComparator());
+			if(order.equals(Order.DESC))Collections.reverse(workingList);
+		}
+		if(sort.equals(SortBy.ID)) {
+			Collections.sort(workingList, new IDComparator());
+			if(order.equals(Order.DESC))Collections.reverse(workingList);
+		}
+	}
 	
+	public List<Entity> search(){
+		List<Entity> toReturn = new ArrayList<>();
+		
+		
+		return toReturn;
+	}
 	
 	
 	

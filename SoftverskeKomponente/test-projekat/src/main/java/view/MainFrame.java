@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 import com.komponente.Entity;
+import com.komponente.Storage;
 
 public class MainFrame extends JFrame{
 	
@@ -90,6 +91,7 @@ public class MainFrame extends JFrame{
 		
 		
 		validate();
+		initActionListeners();
 	}
 	
 	public static MainFrame getInstance() {
@@ -120,6 +122,21 @@ public class MainFrame extends JFrame{
 	}
 	
 	private void initActionListeners() {
+		
+		sortButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				SortDialog dialog = new SortDialog();
+				
+			}
+		});
+	}
+
+	public void setStorage(Storage storage) {
+		for (Entity e: storage.getWorkingList()){
+			addToTable(e);
+		}
 		
 	}
 }
