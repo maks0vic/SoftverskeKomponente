@@ -5,13 +5,13 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 public class DataRepositoryJson extends Storage{
-	ObjectMapper objectMapper = new ObjectMapper();	
+	ObjectMapper objectMapper = new ObjectMapper(new JsonFactory());	
 	
 	public DataRepositoryJson(String adress) {
 		super(adress);
@@ -23,14 +23,15 @@ public class DataRepositoryJson extends Storage{
 	}
 
 	
-	public void save(String collection, Object object) {
+	public void save(Object object) {
 		try {			
 			createConfig();			
 			DataRepositoryJson stor = (DataRepositoryJson) object;
 			ArrayList <MyFile> files = (ArrayList<MyFile>) stor.getFiles();
 			for (int i=0; i < files.size(); i++) {
 				MyFile f = files.get(i);
-				objectMapper.writeValue( new File(adress + f.getFileName() + ".json"),  f);				
+				File u = new File(adress + f.getFileName() + ".json");
+				objectMapper.writeValue(u ,  f.getEntityList());												
 			}			
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -48,17 +49,17 @@ public class DataRepositoryJson extends Storage{
 			        return name.endsWith(".json");
 			    }
 			});
-
 			for (File jsonfile : files) {
-				MyFile mf = objectMapper.readValue(jsonfile, MyFile.class);
-				this.addFile(mf);
+				List<Entity> enList = objectMapper.readValue(jsonfile, new TypeReference<List<Entity>>() {});
+				this.addFile(new MyFile(enList));
 			    }			
-			System.out.println("procitao sve lepo" + this.getFiles().size());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("Problem with loading document");
 		}
 	}
+	
+
 
 	/*@Override
 	public <T> T findById(String collection, String id, Class<T> type) {

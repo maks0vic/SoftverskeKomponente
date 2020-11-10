@@ -7,11 +7,25 @@ public class MyFile {
 	private String fileName;
 	private List<Entity> entityList;
 	
+	
+	
+	
+	public MyFile() {
+		super();
+	}
+
 	public MyFile(String fileName) {
 		super();
 		this.fileName = fileName;
 		entityList = new ArrayList<Entity>();
 	}
+
+	public MyFile(List<Entity> entityList) {
+		super();
+		this.entityList = entityList;
+	}
+
+
 
 	public void addEntity (Entity en) {
 		entityList.add(en);
