@@ -17,11 +17,16 @@ public abstract class Storage {
 	private List<MyFile> files;
 	private List<Entity> workingList;
 
-
 	
+	
+	public Storage() {
+		super();
+	}
+
 	public Storage(String adress) {
 		super();
 		this.adress = adress;
+		files = new ArrayList<MyFile>();
 	}
 
 	public Storage(String adress, List<MyFile> files, String storageType, int maxEntities) {
@@ -73,7 +78,7 @@ public abstract class Storage {
 		}
 	}
 
-	public abstract void save(String collection, Object object);
+	public abstract void save(Object object);
 	public abstract void load();
 	
 	public void addFile(MyFile mf) {

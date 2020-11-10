@@ -9,6 +9,12 @@ public class Entity {
 	private Map <String, String> mapa;
 
 	
+	
+	public Entity() {
+		super();
+	}
+
+
 	public Entity(String name) {
 		super();
 		this.name = name;

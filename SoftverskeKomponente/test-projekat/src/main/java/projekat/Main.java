@@ -39,24 +39,16 @@ public class Main {
 		myFileList.add(myFile1);
 		myFileList.add(myFile2);
 		DataRepositoryJson myStorage = new DataRepositoryJson("C:\\Users\\StefanMaksovic\\git\\repository\\SoftverskeKomponente\\test-projekat\\", myFileList, "JSON", 5);		
-		myStorage.save(null, myStorage);
+		myStorage.save(myStorage);
+
 		
 		String adresa = "C:\\Users\\StefanMaksovic\\git\\repository\\SoftverskeKomponente\\test-projekat\\";
 		Storage storage = new DataRepositoryJson(adresa);
 		storage.readConfig(adresa);
 		storage.load();
-		System.out.println(storage.getMaxEntities());
-		/*storage.loadEntities();
-		System.out.println(storage.gestorage.getWorkingList().size());*/
 		
 
-
-		
-		/*DataRepositoryJson jsonStorage = null ;
-		jsonStorage = (DataRepositoryJson) myStorage.load();
-		System.out.println(jsonStorage.getStorageType());
-
-		MainFrame.getInstance();*/
+		MainFrame.getInstance();
 		
 	}
 
