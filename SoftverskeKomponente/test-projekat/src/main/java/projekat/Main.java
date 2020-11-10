@@ -54,7 +54,7 @@ public class Main {
 		storage.readConfig(adresa);
 		storage.load();
 
-		MainFrame.getInstance();*/
+		*/
 		
 		
 	}
