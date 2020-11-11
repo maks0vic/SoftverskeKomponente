@@ -81,6 +81,8 @@ public class Main {
 		newStorage.readConfig(newStorage.getAdress());
 		newStorage.load();*/
 
+		//lol
+		
 		
 		MainFrame.getInstance();
 	}
