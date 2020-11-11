@@ -58,6 +58,16 @@ public abstract class Storage {
 		//loadEntities();
 	}
 	
+	public Entity getEntityByID(String id) {
+		for(Entity e: workingList) {
+			if(e.getID().equals(id))return e;
+		}
+		
+		
+		return null;
+		
+	}
+	
 	public void addEntity(String name, String id, Map<String, String> map, Map<String, Entity> enMap) {
 		Entity e = new Entity(name, id, map, enMap);
 		this.workingList.add(e);
