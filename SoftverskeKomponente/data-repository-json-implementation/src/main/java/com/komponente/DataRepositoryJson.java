@@ -21,7 +21,6 @@ public class DataRepositoryJson extends Storage{
 		super(adress, files, storageType, maxEntities);
 	}
 
-	
 	public void save(Object object) {
 		try {			
 			createConfig();			
@@ -51,7 +50,9 @@ public class DataRepositoryJson extends Storage{
 			for (File jsonfile : files) {
 				List<Entity> enList = objectMapper.readValue(jsonfile, new TypeReference<List<Entity>>() {});
 				this.addFile(new MyFile(enList));
-			}			
+			
+			}		
+			this.loadEntities();			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("Problem with loading document");

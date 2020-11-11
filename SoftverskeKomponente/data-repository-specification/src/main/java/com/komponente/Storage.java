@@ -30,6 +30,7 @@ public abstract class Storage {
 		super();
 		this.adress = adress;
 		files = new ArrayList<MyFile>();
+		workingList = new ArrayList<Entity>();
 	}
 
 	public Storage(String adress, List<MyFile> files, String storageType, int maxEntities) {
@@ -38,11 +39,11 @@ public abstract class Storage {
 		this.files = files;
 		this.storageType = storageType;
 		this.maxEntities = maxEntities;
+		workingList = new ArrayList<Entity>();
 		//loadEntities();
 	}
 	
 	public void readConfig (String adress) {
-		System.out.println(adress);
 		ArrayList <String> config = new ArrayList<String>(); 	
 		try (BufferedReader br = new BufferedReader(new FileReader(adress+"config.txt"))) {			
 			String st; 			
