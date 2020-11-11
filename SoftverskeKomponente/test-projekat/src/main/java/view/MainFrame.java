@@ -141,7 +141,7 @@ public class MainFrame extends JFrame{
 		}
 		
 	}
-	
+	//set
 	public void setDataRepository(String dp) {
 		this.dataRepositoryPath = dp + "\\" ;
 		storage = new DataRepositoryJson(dataRepositoryPath);
