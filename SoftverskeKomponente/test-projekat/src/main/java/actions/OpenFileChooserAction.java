@@ -19,6 +19,7 @@ public class OpenFileChooserAction implements ActionListener{
 		  
         if (r == JFileChooser.APPROVE_OPTION) {  
             MainFrame.getInstance().setDataRepository(fc.getSelectedFile().getAbsolutePath()); 
+            System.out.println(fc.getSelectedFile().getAbsolutePath());
         } 
    
         

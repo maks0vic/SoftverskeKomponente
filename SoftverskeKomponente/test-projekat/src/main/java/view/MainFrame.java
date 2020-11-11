@@ -143,4 +143,8 @@ public class MainFrame extends JFrame{
 	public void setDataRepository(String dataRepositoryPath) {
 		this.dataRepositoryPath = dataRepositoryPath;
 	}
+	
+	public void createNewRepository(String dataRepositoryPath, int maxEntitites) {
+		
+	}
 }
