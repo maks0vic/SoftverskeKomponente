@@ -221,32 +221,31 @@ public abstract class Storage {
 		List<Entity> toReturn = new ArrayList<>();
 		if(workingList.isEmpty())return null;
 		
-		if(searchEnum.equals(SearchEnum.AT_THE_BEGINING)) {
-			for(Entity e: workingList) {
-				if(e.getID().startsWith(valueForSearch)) {
-					if(!toReturn.contains(e))toReturn.add(e);
+		for(Entity e: workingList) {
+			if(e.getMapa().isEmpty())continue;
+			if(!e.getMapa().containsKey(key))continue;
+				if(searchEnum.equals(SearchEnum.AT_THE_BEGINING)) {
+					
+					if(e.getMapa().get(key).startsWith(valueForSearch))
+						if(!toReturn.contains(e))toReturn.add(e);
+					
+				}else if(searchEnum.equals(SearchEnum.AT_THE_END)) {
+					
+					if(e.getMapa().get(key).endsWith(valueForSearch))
+						if(!toReturn.contains(e))toReturn.add(e);
+					
+				}else if(searchEnum.equals(SearchEnum.SUBSTRING)) {
+					
+					if(e.getMapa().get(key).contains(valueForSearch))
+						if(!toReturn.contains(e))toReturn.add(e);
+					
+				}else if(searchEnum.equals(SearchEnum.EQUAL_AS)) {
+					
+					if(e.getMapa().get(key).equals(valueForSearch))
+						if(!toReturn.contains(e))toReturn.add(e);
 				}
-			}
-		}else if(searchEnum.equals(SearchEnum.AT_THE_END)) {
-			for(Entity e: workingList) {
-				if(e.getID().endsWith(valueForSearch)) {
-					if(!toReturn.contains(e))toReturn.add(e);
-				}
-			}
-		}else if(searchEnum.equals(SearchEnum.SUBSTRING)) {
-			for(Entity e: workingList) {
-				if(e.getID().contains(valueForSearch)) {
-					if(!toReturn.contains(e))toReturn.add(e);
-				}
-			}
-		}else if(searchEnum.equals(SearchEnum.EQUAL_AS)) {
-			for(Entity e: workingList) {
-				if(e.getID().equals(valueForSearch)) {
-					if(!toReturn.contains(e))toReturn.add(e);
-				}
-			}
-		}
 		
+		}
 		
 		return toReturn;
 	}
