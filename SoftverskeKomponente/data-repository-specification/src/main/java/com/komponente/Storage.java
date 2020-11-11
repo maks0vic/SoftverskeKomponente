@@ -14,6 +14,7 @@ import com.componente.comparators.IDComparator;
 import com.componente.comparators.NameComparator;
 import com.componente.comparators.Order;
 import com.componente.comparators.SortBy;
+import com.komponente.search.SearchEnum;
 
 public abstract class Storage {
 	protected String adress; 
@@ -139,8 +140,101 @@ public abstract class Storage {
 		}
 	}
 	
-	public List<Entity> search(){
+	public List<Entity> searchByName(SearchEnum searchEnum, String valueForSearch){
 		List<Entity> toReturn = new ArrayList<>();
+		if(workingList.isEmpty())return null;
+		
+		if(searchEnum.equals(SearchEnum.AT_THE_BEGINING)) {
+			for(Entity e: workingList) {
+				if(e.getName().startsWith(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}else if(searchEnum.equals(SearchEnum.AT_THE_END)) {
+			for(Entity e: workingList) {
+				if(e.getName().endsWith(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}else if(searchEnum.equals(SearchEnum.SUBSTRING)) {
+			for(Entity e: workingList) {
+				if(e.getName().contains(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}else if(searchEnum.equals(SearchEnum.EQUAL_AS)) {
+			for(Entity e: workingList) {
+				if(e.getName().equals(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}
+		
+		return toReturn;
+	}
+	
+	public List<Entity> searchByID(SearchEnum searchEnum, String valueForSearch){
+		List<Entity> toReturn = new ArrayList<>();
+		if(workingList.isEmpty())return null;
+		
+		if(searchEnum.equals(SearchEnum.AT_THE_BEGINING)) {
+			for(Entity e: workingList) {
+				if(e.getID().startsWith(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}else if(searchEnum.equals(SearchEnum.AT_THE_END)) {
+			for(Entity e: workingList) {
+				if(e.getID().endsWith(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}else if(searchEnum.equals(SearchEnum.SUBSTRING)) {
+			for(Entity e: workingList) {
+				if(e.getID().contains(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}else if(searchEnum.equals(SearchEnum.EQUAL_AS)) {
+			for(Entity e: workingList) {
+				if(e.getID().equals(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}
+		
+		return toReturn;
+	}
+	
+	public List<Entity> searchByValueInMap(String key, SearchEnum searchEnum, String valueForSearch){
+		List<Entity> toReturn = new ArrayList<>();
+		if(workingList.isEmpty())return null;
+		
+		if(searchEnum.equals(SearchEnum.AT_THE_BEGINING)) {
+			for(Entity e: workingList) {
+				if(e.getID().startsWith(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}else if(searchEnum.equals(SearchEnum.AT_THE_END)) {
+			for(Entity e: workingList) {
+				if(e.getID().endsWith(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}else if(searchEnum.equals(SearchEnum.SUBSTRING)) {
+			for(Entity e: workingList) {
+				if(e.getID().contains(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}else if(searchEnum.equals(SearchEnum.EQUAL_AS)) {
+			for(Entity e: workingList) {
+				if(e.getID().equals(valueForSearch)) {
+					if(!toReturn.contains(e))toReturn.add(e);
+				}
+			}
+		}
 		
 		
 		return toReturn;
