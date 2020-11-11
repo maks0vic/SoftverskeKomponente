@@ -1,0 +1,57 @@
+[ {
+  "name" : "Stefan",
+  "mapa" : {
+    "limun" : "zuta"
+  },
+  "enMapa" : { },
+  "id" : "001"
+}, {
+  "name" : "Ivan",
+  "mapa" : {
+    "jabuka" : "crvena"
+  },
+  "enMapa" : { },
+  "id" : "002"
+}, {
+  "name" : "Sanja",
+  "mapa" : {
+    "ananas" : "narandzasta"
+  },
+  "enMapa" : { },
+  "id" : "003"
+}, {
+  "name" : "Lazar",
+  "mapa" : {
+    "kupus" : "zelena"
+  },
+  "enMapa" : { },
+  "id" : "004"
+}, {
+  "name" : "Matija",
+  "mapa" : {
+    "banana" : "zuta"
+  },
+  "enMapa" : { },
+  "id" : "005"
+}, {
+  "name" : "Stole",
+  "mapa" : {
+    "jagoda" : "crvena"
+  },
+  "enMapa" : { },
+  "id" : "006"
+}, {
+  "name" : "Fica",
+  "mapa" : {
+    "pomorandza" : "narandzasta"
+  },
+  "enMapa" : { },
+  "id" : "007"
+}, {
+  "name" : "Majkic",
+  "mapa" : {
+    "mango" : "zelena"
+  },
+  "enMapa" : { },
+  "id" : "008"
+} ]
