@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -69,24 +70,26 @@ public abstract class Storage {
 	}
 	
 	public void addEntity(String name, String id, Map<String, String> map, Map<String, Entity> enMap) {
+		if(id.equals("") && !this.checkID(id))id = this.getGeneratedID();
+		if(map == null)map = new HashMap<String, String>();
+		if(enMap == null)enMap = new HashMap<String, Entity>();
 		Entity e = new Entity(name, id, map, enMap);
 		this.workingList.add(e);
 	}
 	
 	public void addEntity(String name, String id) {
-		Entity e = new Entity(name);
+		if(id.equals("") && !this.checkID(id))id = this.getGeneratedID();
+		Entity e = new Entity(name, id);
 		this.workingList.add(e);
 	}
 	
 	public void addEntity(String name, String id, Map<String, String> map) {
+		if(id.equals("") && !this.checkID(id))id = this.getGeneratedID();
+		if(map == null)map = new HashMap<String, String>();
 		Entity e = new Entity(name, id, map);
 		this.workingList.add(e);
 	}
-	
-	public void addEntity(String name) {
-		Entity e = new Entity(name);
-		this.workingList.add(e);
-	}
+
 	
 	public void readConfig (String adress) {
 		ArrayList <String> config = new ArrayList<String>(); 	

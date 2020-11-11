@@ -14,11 +14,6 @@ public class Entity {
 		super();
 	}
 
-	public Entity(String name) {
-		super();
-		this.name = name;
-	}
-
 	public Entity(String name, String ID) {
 		super();
 		this.name = name;

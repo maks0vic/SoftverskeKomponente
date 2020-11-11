@@ -25,6 +25,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import com.komponente.Entity;
+
 public class AddDialog extends JDialog{
 
 	private JLabel nameLabel;
@@ -124,7 +126,10 @@ public class AddDialog extends JDialog{
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
 				if(chooseIdRadio.isSelected())idTextField.setEnabled(true);
-				else idTextField.setEnabled(false);
+				else {
+					idTextField.setEnabled(false);
+					idTextField.setText("");
+				}
 			}
 		});
 		
@@ -164,9 +169,9 @@ public class AddDialog extends JDialog{
 					String key;
 					String value;
 					
-					key = keyTextField1.getText();
+					key = keyTextField2.getText();
 					if(key.equals(""))return;
-					value = valueTextField1.getText();
+					value = valueTextField2.getText();
 					if(value.equals(""))return;
 					
 					if(mapa2.containsKey(key))return;
@@ -232,10 +237,29 @@ public class AddDialog extends JDialog{
 				if(nameTextField.getText().equals(""))return;
 				
 				String name = nameTextField.getText();
-				String id;
+				String id = "";
 				if(idTextField.isEnabled())id = idTextField.getText();
-				else id = "autogenerate";
+				if(MainFrame.getInstance().getStorage().checkID(id))return;
 				
+				Map<String, Entity> enMapToReturn = new HashMap<>();
+				
+				if(!mapa2.isEmpty()) {
+					for(Map.Entry<String, String> entry: mapa2.entrySet()) {
+						enMapToReturn.put(entry.getKey(), MainFrame.getInstance().getStorage().getEntityByID(entry.getValue()));
+					}
+				}
+				
+				MainFrame.getInstance().getStorage().addEntity(name, id, mapa1, enMapToReturn);
+				MainFrame.getInstance().refresh();
+				
+				nameTextField.setText("");
+				idTextField.setText("");
+				listModel1.removeAllElements();
+				listModel2.removeAllElements();
+				keyTextField1.setText("");
+				keyTextField2.setText("");
+				valueTextField1.setText("");
+				valueTextField2.setText("");
 			}
 			
 		});

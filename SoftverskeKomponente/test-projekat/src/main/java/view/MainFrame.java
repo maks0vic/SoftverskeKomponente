@@ -23,6 +23,7 @@ import com.komponente.DataRepositoryJson;
 import com.komponente.Entity;
 import com.komponente.Storage;
 
+import actions.AddDialogAction;
 import actions.OpenFileChooserAction;
 
 public class MainFrame extends JFrame{
@@ -42,6 +43,7 @@ public class MainFrame extends JFrame{
 	private Storage storage;
 	
 	private MainFrame() {
+		storage = new DataRepositoryJson("");
 		setSize(800,600);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLocationRelativeTo(null);
@@ -113,14 +115,22 @@ public class MainFrame extends JFrame{
 		list.add(e.getName());
 		list.add(e.getID());
 		String mapa = "";
+		String enMapa = "";
 		if(!e.getMapa().isEmpty()) {
 			for (String key : e.getMapa().keySet()) {
 			    mapa += key + ":" + e.getMapa().get(key) + " , ";
 			}
 		}
 		if(!mapa.equals(""))mapa = mapa.substring(0, mapa.length() - 2);
-
 		list.add(mapa);
+		
+		if(!e.getEnMapa().isEmpty()) {
+			for (String key : e.getEnMapa().keySet()) {
+			    enMapa += key + ":" + e.getEnMapa().get(key).getID() + " , ";
+			}
+		}
+		if(!enMapa.equals(""))enMapa = enMapa.substring(0, enMapa.length() - 2);
+		list.add(enMapa);
 		tableModel.addRow(list.toArray());
 	}
 	
@@ -132,7 +142,7 @@ public class MainFrame extends JFrame{
 	
 	private void initActionListeners() {
 		openDataRepositoryButton.addActionListener(new OpenFileChooserAction());
-		
+		addEntityButton.addActionListener(new AddDialogAction());
 	}
 
 	public void setStorage(Storage storage) {
@@ -150,11 +160,25 @@ public class MainFrame extends JFrame{
 		System.out.println(storage.getMaxEntities());
 		System.out.println(storage.getStorageType());
 		System.out.println(storage.getWorkingList().size());
+		
 	}
 	
 	public void createNewRepository(String dataRepositoryPath, int maxEntities) {
 		storage = new DataRepositoryJson(dataRepositoryPath);
 		storage.setMaxEntities(maxEntities);
 		storage.setStorageType("JSON");
+
+	}
+	
+	public Storage getStorage() {
+		return storage;
+	}
+
+	public void refresh() {
+		this.tableModel.getDataVector().removeAllElements();
+		for(Entity e: this.storage.getWorkingList()) {
+			this.addToTable(e);
+		}
+		
 	}
 }

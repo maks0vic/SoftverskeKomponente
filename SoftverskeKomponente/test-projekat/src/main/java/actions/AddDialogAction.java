@@ -10,7 +10,7 @@ public class AddDialogAction implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		AddDialog dialog = new AddDialog();
-		System.out.println("DUMMY");
+
 		
 	}
 
