@@ -27,10 +27,10 @@ public class Entity {
 		enMapa = new HashMap<>();
 	}
 
-	public Entity(String name, String ID, Map<String, String> mapa) {
+	public Entity(String name, String iD, Map<String, String> mapa) {
 		super();
 		this.name = name;
-		this.ID = ID;
+		this.ID = iD;
 		this.mapa = mapa;
 		enMapa = new HashMap<>();
 	}

@@ -9,11 +9,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import com.componente.comparators.IDComparator;
 import com.componente.comparators.NameComparator;
 import com.componente.comparators.Order;
 import com.componente.comparators.SortBy;
+import com.komponente.search.NestedSearchEnum;
 import com.komponente.search.SearchEnum;
 
 public abstract class Storage {
@@ -53,6 +55,26 @@ public abstract class Storage {
 		this.maxEntities = maxEntities;
 		workingList = new ArrayList<Entity>();
 		//loadEntities();
+	}
+	
+	public void addEntity(String name, String id, Map<String, String> map, Map<String, Entity> enMap) {
+		Entity e = new Entity(name, id, map, enMap);
+		this.workingList.add(e);
+	}
+	
+	public void addEntity(String name, String id) {
+		Entity e = new Entity(name);
+		this.workingList.add(e);
+	}
+	
+	public void addEntity(String name, String id, Map<String, String> map) {
+		Entity e = new Entity(name, id, map);
+		this.workingList.add(e);
+	}
+	
+	public void addEntity(String name) {
+		Entity e = new Entity(name);
+		this.workingList.add(e);
 	}
 	
 	public void readConfig (String adress) {
@@ -217,7 +239,7 @@ public abstract class Storage {
 		return toReturn;
 	}
 	
-	public List<Entity> searchByValueInMap(String key, SearchEnum searchEnum, String valueForSearch){
+	public List<Entity> searchByValueInSimplePropertyMap(String key, SearchEnum searchEnum, String valueForSearch){
 		List<Entity> toReturn = new ArrayList<>();
 		if(workingList.isEmpty())return null;
 		
@@ -244,9 +266,108 @@ public abstract class Storage {
 					if(e.getMapa().get(key).equals(valueForSearch))
 						if(!toReturn.contains(e))toReturn.add(e);
 				}
+			}
 		
+		return toReturn;
+		
+	}
+		
+	public List<Entity> searchInEntityMap(String key, NestedSearchEnum nEnum, SearchEnum searchEnum, String valueForSearch, String key2){
+		List<Entity> toReturn = new ArrayList<>();
+		if(workingList.isEmpty())return null;
+		for(Entity e: workingList) {
+			if(e.getEnMapa().isEmpty())continue;
+			if(!e.getEnMapa().containsKey(key))continue;
+			if(nEnum.equals(NestedSearchEnum.ID)) {
+				
+				if(searchEnum.equals(SearchEnum.AT_THE_BEGINING)) {
+				
+					if(e.getEnMapa().get(key).getID().startsWith(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+				
+				}else if(searchEnum.equals(SearchEnum.AT_THE_END)) {
+					
+					if(e.getEnMapa().get(key).getID().endsWith(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+					
+				}else if(searchEnum.equals(SearchEnum.SUBSTRING)) {
+					
+					if(e.getEnMapa().get(key).getID().contains(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+					
+				}else if(searchEnum.equals(SearchEnum.EQUAL_AS)) {
+					
+					if(e.getEnMapa().get(key).getID().equals(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+					
+				}
+				
+			}else if(nEnum.equals(NestedSearchEnum.NAME)) {
+				
+				if(searchEnum.equals(SearchEnum.AT_THE_BEGINING)) {
+					
+					if(e.getEnMapa().get(key).getName().startsWith(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+				
+				}else if(searchEnum.equals(SearchEnum.AT_THE_END)) {
+					
+					if(e.getEnMapa().get(key).getName().endsWith(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+					
+				}else if(searchEnum.equals(SearchEnum.SUBSTRING)) {
+					
+					if(e.getEnMapa().get(key).getName().contains(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+					
+				}else if(searchEnum.equals(SearchEnum.EQUAL_AS)) {
+					
+					if(e.getEnMapa().get(key).getName().equals(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+					
+				}
+				
+			}else if(nEnum.equals(NestedSearchEnum.MAP)) {
+				if(key2 == null)continue;
+				if(e.getEnMapa().get(key).getMapa().isEmpty())continue;
+				if(!e.getEnMapa().get(key).getMapa().containsKey(key2))continue;
+				
+				if(searchEnum.equals(SearchEnum.AT_THE_BEGINING)) {
+					
+					if(e.getEnMapa().get(key).getMapa().get(key2).startsWith(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+				
+				}else if(searchEnum.equals(SearchEnum.AT_THE_END)) {
+					
+					if(e.getEnMapa().get(key).getMapa().get(key2).endsWith(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+					
+				}else if(searchEnum.equals(SearchEnum.SUBSTRING)) {
+					
+					if(e.getEnMapa().get(key).getMapa().get(key2).contains(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+					
+				}else if(searchEnum.equals(SearchEnum.EQUAL_AS)) {
+					
+					if(e.getEnMapa().get(key).getMapa().get(key2).equals(valueForSearch)) {
+						if(!toReturn.contains(e))toReturn.add(e);
+					}
+					
+				}
+			}
+			
+			
 		}
-		
 		return toReturn;
 	}
 	
