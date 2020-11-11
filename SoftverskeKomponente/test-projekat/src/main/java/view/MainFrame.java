@@ -22,6 +22,8 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 import com.komponente.Entity;
 import com.komponente.Storage;
 
+import actions.OpenFileChooserAction;
+
 public class MainFrame extends JFrame{
 	
 	private static MainFrame instance = null;
@@ -34,6 +36,8 @@ public class MainFrame extends JFrame{
 	private JButton sortButton;
 	private JToolBar toolbar;
 	private DefaultTableModel tableModel;
+	private JButton openDataRepositoryButton;
+	private String dataRepositoryPath;
 	
 	private MainFrame() {
 		setSize(800,600);
@@ -48,8 +52,11 @@ public class MainFrame extends JFrame{
 		deleteSelectedEntitiesButton = new JButton("Delete selected");
 		searchButton = new JButton("Search");
 		sortButton = new JButton("Sort");
+		openDataRepositoryButton = new JButton("Open data repository");
 		toolbar = new JToolBar();
 		
+		toolbar.addSeparator(new Dimension(30, 20));
+		toolbar.add(openDataRepositoryButton);
 		toolbar.addSeparator(new Dimension(30, 20));
 		toolbar.add(addEntityButton);
 		toolbar.addSeparator(new Dimension(30, 20));
@@ -122,15 +129,8 @@ public class MainFrame extends JFrame{
 	}
 	
 	private void initActionListeners() {
+		openDataRepositoryButton.addActionListener(new OpenFileChooserAction());
 		
-		sortButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				SortDialog dialog = new SortDialog();
-				
-			}
-		});
 	}
 
 	public void setStorage(Storage storage) {
@@ -138,5 +138,9 @@ public class MainFrame extends JFrame{
 			addToTable(e);
 		}
 		
+	}
+	
+	public void setDataRepository(String dataRepositoryPath) {
+		this.dataRepositoryPath = dataRepositoryPath;
 	}
 }

@@ -17,7 +17,7 @@ public class Main {
 
 	public static void main(String[] args){
 		
-		Map <String, String> enMapa1 = new HashMap<>();
+	/*	Map <String, String> enMapa1 = new HashMap<>();
 		enMapa1.put("en1key1", "en1value1");
 		enMapa1.put("en1key2", "en1value2");
 		
@@ -32,7 +32,7 @@ public class Main {
 		
 		/*Map <String, Entity> enMapa3 = new HashMap<>();
 		enMapa3.put("en3", en3);
-		enMapa3.put("en4", en4);*/
+		enMapa3.put("en4", en4);
 		
 		en1.addEntityToMap("zekaPeka", en3);
 		en1.addEntityToMap("pekaZeka", en4);
@@ -45,7 +45,7 @@ public class Main {
 		
 		/*MyFile myFile2 = new MyFile("file2");
 		myFile2.addEntity(en2);
-		myFile2.addEntity(en1);	*/	
+		myFile2.addEntity(en1);		
 		
 		List<MyFile> myFileList = new ArrayList<>();
 		myFileList.add(myFile1);
@@ -65,7 +65,7 @@ public class Main {
 		
 		System.out.println(newStorage.getWorkingList().size());
 
-		
+		*/
 		
 		//MainFrame.getInstance();
 	}
