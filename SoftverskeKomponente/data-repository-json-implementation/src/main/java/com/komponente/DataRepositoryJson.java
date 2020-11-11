@@ -21,7 +21,6 @@ public class DataRepositoryJson extends Storage{
 		super(adress, files, storageType, maxEntities);
 	}
 
-	
 	public void save(Object object) {
 		try {			
 			createConfig();			
@@ -30,7 +29,8 @@ public class DataRepositoryJson extends Storage{
 			for (int i=0; i < files.size(); i++) {
 				MyFile f = files.get(i);
 				File u = new File(adress + f.getFileName() + ".json");
-				objectMapper.writeValue(u ,  f.getEntityList());												
+				objectMapper.writerWithDefaultPrettyPrinter().writeValue(u ,  f.getEntityList());		
+				//objectMapper.writeValue(u ,  f.getEntityList());												
 			}			
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -50,8 +50,10 @@ public class DataRepositoryJson extends Storage{
 			});
 			for (File jsonfile : files) {
 				List<Entity> enList = objectMapper.readValue(jsonfile, new TypeReference<List<Entity>>() {});
-				this.addFile(new MyFile(enList));
-			}			
+				this.addFile(new MyFile("f",enList));
+			
+			}		
+			this.loadEntities();			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("Problem with loading document");
