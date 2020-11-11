@@ -23,6 +23,7 @@ import com.komponente.DataRepositoryJson;
 import com.komponente.Entity;
 import com.komponente.Storage;
 
+import actions.AddDialogAction;
 import actions.OpenFileChooserAction;
 
 public class MainFrame extends JFrame{
@@ -132,6 +133,7 @@ public class MainFrame extends JFrame{
 	
 	private void initActionListeners() {
 		openDataRepositoryButton.addActionListener(new OpenFileChooserAction());
+		addEntityButton.addActionListener(new AddDialogAction());
 		
 	}
 
