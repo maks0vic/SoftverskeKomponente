@@ -29,6 +29,10 @@ public class Main {
 		Entity en2 = new Entity("Entitet2", "002", enMapa2);
 		Entity en3 = new Entity("Entitet3", "003", enMapa2);
 		Entity en4 = new Entity("Entitet4", "004", enMapa2);
+		Entity en5 = new Entity("Entitet5", "005", enMapa1);
+		Entity en6 = new Entity("Entitet6", "006", enMapa2);
+		Entity en7 = new Entity("Entitet7", "007", enMapa2);
+		Entity en8 = new Entity("Entitet8", "008", enMapa2);
 		
 		/*Map <String, Entity> enMapa3 = new HashMap<>();
 		enMapa3.put("en3", en3);
@@ -51,7 +55,7 @@ public class Main {
 		myFileList.add(myFile1);
 		//myFileList.add(myFile2);
 		
-		File pom = new File("");
+		/*File pom = new File("");
 		String saveAddress = pom.getAbsolutePath();
 		String loadAddress = "C:\\Users\\StefanMaksovic\\git\\repository\\data-repository-specification\\SoftverskeKomponente\\test-projekat\\";
 		
@@ -59,11 +63,9 @@ public class Main {
 		myStorage.save(myStorage);
 		
 		DataRepositoryJson newStorage = new DataRepositoryJson(loadAddress);
-		//newStorage.readConfig(adresa);
-		newStorage.load();
+		newStorage.readConfig(newStorage.getAdress());
+		newStorage.load();*/
 
-		
-		System.out.println(newStorage.getWorkingList());
 		
 		MainFrame.getInstance();
 	}

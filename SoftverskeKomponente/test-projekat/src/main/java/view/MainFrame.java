@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+import com.komponente.DataRepositoryJson;
 import com.komponente.Entity;
 import com.komponente.Storage;
 
@@ -38,6 +39,7 @@ public class MainFrame extends JFrame{
 	private DefaultTableModel tableModel;
 	private JButton openDataRepositoryButton;
 	private String dataRepositoryPath;
+	private Storage storage;
 	
 	private MainFrame() {
 		setSize(800,600);
@@ -140,11 +142,19 @@ public class MainFrame extends JFrame{
 		
 	}
 	
-	public void setDataRepository(String dataRepositoryPath) {
-		this.dataRepositoryPath = dataRepositoryPath;
+	public void setDataRepository(String dp) {
+		this.dataRepositoryPath = dp + "\\" ;
+		storage = new DataRepositoryJson(dataRepositoryPath);
+		storage.readConfig(storage.getAdress());
+		storage.load();
+		System.out.println(storage.getMaxEntities());
+		System.out.println(storage.getStorageType());
+		System.out.println(storage.getWorkingList());
 	}
 	
-	public void createNewRepository(String dataRepositoryPath, int maxEntitites) {
-		
+	public void createNewRepository(String dataRepositoryPath, int maxEntities) {
+		storage = new DataRepositoryJson(dataRepositoryPath);
+		storage.setMaxEntities(maxEntities);
+		storage.setStorageType("JSON");
 	}
 }
