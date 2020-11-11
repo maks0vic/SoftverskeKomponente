@@ -26,13 +26,27 @@ public class DataRepositoryJson extends Storage{
 			createConfig();			
 			DataRepositoryJson stor = (DataRepositoryJson) object;
 			ArrayList <MyFile> files = (ArrayList<MyFile>) stor.getFiles();
+			ArrayList <Entity> pom = new ArrayList<Entity>();
+			ArrayList <Entity> pomList = new ArrayList<Entity>();
+			
+			
 			for (int i=0; i < files.size(); i++) {
 				MyFile f = files.get(i);
-				File u = new File(adress + "\\" + f.getFileName() + ".json");
-				System.out.println("u := " + u.getAbsolutePath());
-				objectMapper.writerWithDefaultPrettyPrinter().writeValue(u ,  f.getEntityList());		
-				//objectMapper.writeValue(u ,  f.getEntityList());												
-			}			
+				pom.addAll(f.getEntityList());
+			}
+			int j = 0;
+			int m = getMaxEntities();
+			File u = new File(adress + "\\" + j + ".json");
+			for (int i=0; i < pom.size(); i++) {
+				pomList.add(pom.get(i));
+				if ( i % m == m - 1) {
+					j++;
+					objectMapper.writerWithDefaultPrettyPrinter().writeValue(u , pomList);
+					pomList.clear();
+					u = new File(adress + "\\" + j + ".json");
+				}
+				objectMapper.writerWithDefaultPrettyPrinter().writeValue(u , pomList);
+			}		
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("Problem with saving document");
