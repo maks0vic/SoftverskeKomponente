@@ -17,8 +17,9 @@ public class MyFile {
 		entityList = new ArrayList<Entity>();
 	}
 
-	public MyFile(List<Entity> entityList) {
+	public MyFile(String fileName, List<Entity> entityList) {
 		super();
+		this.fileName = fileName;
 		this.entityList = entityList;
 	}
 

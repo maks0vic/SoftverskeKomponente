@@ -10,6 +10,9 @@ import com.komponente.*;
 
 import view.MainFrame;
 
+import javax.swing.JFileChooser;
+import java.io.File;   
+
 public class Main {
 
 	public static void main(String[] args){
@@ -56,6 +59,7 @@ public class Main {
 		DataRepositoryJson newStorage = new DataRepositoryJson(adresa);
 		newStorage.readConfig(adresa);
 		newStorage.load();
+
 		
 		System.out.println(newStorage.getWorkingList().size());
 

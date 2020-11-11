@@ -24,11 +24,22 @@ public abstract class Storage {
 
 	public Storage() {
 		super();
+		files = new ArrayList<MyFile>();
+		workingList = new ArrayList<Entity>();
 	}
 
 	public Storage(String adress) {
 		super();
 		this.adress = adress;
+		files = new ArrayList<MyFile>();
+		workingList = new ArrayList<Entity>();
+	}
+	
+
+	public Storage(String adress, String storageType) {
+		super();
+		this.adress = adress;
+		this.storageType = storageType;
 		files = new ArrayList<MyFile>();
 		workingList = new ArrayList<Entity>();
 	}
@@ -53,8 +64,7 @@ public abstract class Storage {
 		}	
 		catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}		
 		this.storageType = config.get(0);
 		this.maxEntities = Integer.parseInt(config.get(1));		
 	}
