@@ -74,7 +74,7 @@ public class Main {
 		String saveAddress = pom.getAbsolutePath();
 		String loadAddress = "C:\\Users\\StefanMaksovic\\git\\repository\\data-repository-specification\\SoftverskeKomponente\\test-projekat\\";
 		
-		DataRepositoryJson myStorage = new DataRepositoryJson(saveAddress, myFileList, "JSON", 5);		
+		DataRepositoryJson myStorage = new DataRepositoryJson(saveAddress, myFileList, "JSON", 3);		
 		myStorage.save(myStorage);
 		
 		/*DataRepositoryJson newStorage = new DataRepositoryJson(loadAddress);

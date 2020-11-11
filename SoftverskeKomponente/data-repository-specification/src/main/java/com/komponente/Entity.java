@@ -2,6 +2,7 @@ package com.komponente;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Entity {
 	private String name;
@@ -16,7 +17,6 @@ public class Entity {
 	public Entity(String name) {
 		super();
 		this.name = name;
-		this.ID = getGeneratedID();
 	}
 
 	public Entity(String name, String ID) {
@@ -81,10 +81,6 @@ public class Entity {
 
 	public boolean checkIsIdUnique () {
 		return true;		
-	}
-	
-	private String getGeneratedID () {
-		return "default ID";
 	}
 	
 	public Map<String, Entity> getEnMapa() {

@@ -151,7 +151,7 @@ public class MainFrame extends JFrame{
 		storage.load();
 		System.out.println(storage.getMaxEntities());
 		System.out.println(storage.getStorageType());
-		System.out.println(storage.getWorkingList());
+		System.out.println(storage.getWorkingList().size());
 	}
 	
 	public void createNewRepository(String dataRepositoryPath, int maxEntities) {

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import com.componente.comparators.IDComparator;
 import com.componente.comparators.NameComparator;
@@ -113,6 +114,23 @@ public abstract class Storage {
 			for (Entity e : f.getEntityList()) 
 				workingList.add(e);
 		}
+	}
+	
+	public boolean checkID (String id) {
+		for (int i=0; i<workingList.size(); i++) {
+			if (id.equals(workingList.get(i).getID())) 
+				return true;
+		}
+		return false;
+	}
+	
+	private String getGeneratedID () {
+		Random rand = new Random();
+	    int upperbound = 100000;
+	    int int_random = rand.nextInt(upperbound); 
+	    if (!checkID("" + int_random))
+	    	return "" + int_random;
+	    else return getGeneratedID();
 	}
 
 	public abstract void save(Object object);
