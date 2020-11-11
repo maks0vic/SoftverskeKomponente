@@ -234,7 +234,7 @@ public class AddDialog extends JDialog{
 				String name = nameTextField.getText();
 				String id;
 				if(idTextField.isEnabled())id = idTextField.getText();
-				else id = "auto";
+				else id = "autogenerate";
 				
 			}
 			
