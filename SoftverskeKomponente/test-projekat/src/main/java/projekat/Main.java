@@ -50,12 +50,16 @@ public class Main {
 		List<MyFile> myFileList = new ArrayList<>();
 		myFileList.add(myFile1);
 		//myFileList.add(myFile2);
-
-		DataRepositoryJson myStorage = new DataRepositoryJson("/home/ivan/git/data-repository-specification/SoftverskeKomponente/test-projekat/", myFileList, "JSON", 5);		
-
-		String adresa = "C:\\Users\\StefanMaksovic\\git\\repository\\data-repository-specification\\SoftverskeKomponente\\test-projekat\\";
-		DataRepositoryJson newStorage = new DataRepositoryJson(adresa);
-		newStorage.readConfig(adresa);
+		
+		File pom = new File("");
+		String saveAddress = pom.getAbsolutePath();
+		String loadAddress = "C:\\Users\\StefanMaksovic\\git\\repository\\data-repository-specification\\SoftverskeKomponente\\test-projekat\\";
+		
+		DataRepositoryJson myStorage = new DataRepositoryJson(saveAddress, myFileList, "JSON", 5);		
+		myStorage.save(myStorage);
+		
+		DataRepositoryJson newStorage = new DataRepositoryJson(loadAddress);
+		//newStorage.readConfig(adresa);
 		newStorage.load();
 
 		
@@ -63,7 +67,7 @@ public class Main {
 
 		
 		
-		MainFrame.getInstance();
+		//MainFrame.getInstance();
 	}
 
 }

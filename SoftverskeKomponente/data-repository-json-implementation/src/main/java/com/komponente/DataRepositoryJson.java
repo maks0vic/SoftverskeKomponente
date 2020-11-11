@@ -28,7 +28,8 @@ public class DataRepositoryJson extends Storage{
 			ArrayList <MyFile> files = (ArrayList<MyFile>) stor.getFiles();
 			for (int i=0; i < files.size(); i++) {
 				MyFile f = files.get(i);
-				File u = new File(adress + f.getFileName() + ".json");
+				File u = new File(adress + "\\" + f.getFileName() + ".json");
+				System.out.println("u := " + u.getAbsolutePath());
 				objectMapper.writerWithDefaultPrettyPrinter().writeValue(u ,  f.getEntityList());		
 				//objectMapper.writeValue(u ,  f.getEntityList());												
 			}			

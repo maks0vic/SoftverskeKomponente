@@ -54,7 +54,7 @@ public class DataRepositoryYaml extends Storage{
 			});
 			for (File yamlfile : files) {
 				List<Entity> enList = objectMapper.readValue(yamlfile, new TypeReference<List<Entity>>() {});
-//				this.addFile(new MyFile(enList));
+				this.addFile(new MyFile("f", enList));
 			    }			
 		} catch (Exception ex) {
 			ex.printStackTrace();
