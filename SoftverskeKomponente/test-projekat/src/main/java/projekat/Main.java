@@ -63,11 +63,9 @@ public class Main {
 		newStorage.load();
 
 		
-		System.out.println(newStorage.getWorkingList().size());
-
+		System.out.println(newStorage.getWorkingList());
 		
-		
-		//MainFrame.getInstance();
+		MainFrame.getInstance();
 	}
 
 }
