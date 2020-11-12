@@ -210,7 +210,10 @@ public class MainFrame extends JFrame{
 	}
 
 	public void refresh() {
+		this.table.clearSelection();
 		this.tableModel.getDataVector().removeAllElements();
+		
+
 		for(Entity e: this.storage.getWorkingList()) {
 			this.addToTable(e);
 		}
