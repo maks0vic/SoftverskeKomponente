@@ -26,8 +26,10 @@ public class DeleteAction implements ActionListener{
 		int[] niz = table.getSelectedRows();
 		
 		for(int i = 0; i < niz.length; i++) {
-			entitiesToDelete.add(storage.getEntityByID((String) table.getValueAt(i, 1)));
+			entitiesToDelete.add(storage.getEntityByID((String) table.getValueAt(niz[i], 1)));
+			System.out.println(niz[i]);
 		}
+
 		
 		if(entitiesToDelete.isEmpty())return;
 		storage.deleteEntityList(entitiesToDelete);
