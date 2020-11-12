@@ -186,6 +186,7 @@ public class SearchAndDeleteDialog extends JDialog{
 				}
 				
 				MainFrame.getInstance().getStorage().deleteEntityList(toReturn);
+				MainFrame.getInstance().refresh();
 			}
 		});
 		

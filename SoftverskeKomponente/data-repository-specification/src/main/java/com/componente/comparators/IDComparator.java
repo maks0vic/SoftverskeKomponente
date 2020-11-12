@@ -4,6 +4,12 @@ import java.util.Comparator;
 
 import com.komponente.Entity;
 
+
+/**
+ * Comparator that compares two entities by id.
+ * @author ivan
+ *
+ */
 public class IDComparator implements Comparator<Entity>{
 
 	@Override
