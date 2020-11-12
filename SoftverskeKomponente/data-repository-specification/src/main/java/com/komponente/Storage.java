@@ -146,11 +146,14 @@ public abstract class Storage {
 	}
 	
 	public void deleteEntityList(List<Entity> en) {
+		System.out.println(en);
 		for (int i=0; i<en.size(); i++) {
 			Iterator itr = workingList.iterator(); 
 	        while (itr.hasNext()) 
 	        { 
-	        	if (en.get(i).equals((Entity) itr))
+	        	if (en.get(i).equals((Entity) itr.next()))
+	        		System.out.println(en.get(i));
+	        		System.out.println((Entity) itr.next());
 	        		itr.remove();  
 	        } 
 		}
@@ -160,7 +163,7 @@ public abstract class Storage {
 		Iterator itr = workingList.iterator(); 
         while (itr.hasNext()) 
         { 
-        	if (en.equals((Entity) itr))
+        	if (en.equals((Entity) itr.next()))
         		itr.remove();  
         } 
 		
