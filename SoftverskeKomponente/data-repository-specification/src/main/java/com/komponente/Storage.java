@@ -88,9 +88,13 @@ public abstract class Storage {
 		Entity e = new Entity(name, id, map);
 		this.workingList.add(e);
 	}
+	
+	public abstract void save();
+	public abstract void load();
+	public abstract boolean checkType(String s);
 
 	
-	public void readConfig (String adress) {
+	public boolean readConfig (String adress) {
 		ArrayList <String> config = new ArrayList<String>(); 	
 		try (BufferedReader br = new BufferedReader(new FileReader(adress+"\\config.txt"))) {			
 			String st; 			
@@ -101,8 +105,15 @@ public abstract class Storage {
 		catch (Exception e) {
 			e.printStackTrace();
 		}		
-		this.storageType = config.get(0);
-		this.maxEntities = Integer.parseInt(config.get(1));		
+		if ( checkType(config.get(0)) ) {
+			this.storageType = config.get(0);
+			this.maxEntities = Integer.parseInt(config.get(1));
+			return true;
+		}
+		else {
+			System.out.println("Type ne odgovara");
+			return false;
+		}
 	}
 	
 	public void createConfig() {
@@ -172,8 +183,7 @@ public abstract class Storage {
 		
 	}
 
-	public abstract void save();
-	public abstract void load();
+
 	
 	public void addFile(MyFile mf) {
 		files.add(mf);

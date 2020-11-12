@@ -71,4 +71,10 @@ public class DataRepositoryJson extends Storage{
 			throw new RuntimeException("Problem with loading document");
 		}
 	}
+
+	@Override
+	public boolean checkType(String s) {
+		if (s.equals("JSON")) return true;
+		return false;
+	}
 }

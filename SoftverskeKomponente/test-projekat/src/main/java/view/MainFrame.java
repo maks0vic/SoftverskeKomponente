@@ -182,9 +182,13 @@ public class MainFrame extends JFrame{
 	public void setDataRepository(String dp) {
 		this.dataRepositoryPath = dp;
 		storage = new DataRepositoryJson(dataRepositoryPath);
-		storage.readConfig(storage.getAdress());
-		storage.load();
-		enableButtons();
+		if (storage.readConfig(storage.getAdress()) ) {
+			storage.load();
+			enableButtons();
+		}
+		else {
+				// mozda neki pop up sta znam
+		}
 		refresh();
 	}
 	
