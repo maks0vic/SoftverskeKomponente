@@ -146,17 +146,18 @@ public abstract class Storage {
 	}
 	
 	public void deleteEntityList(List<Entity> en) {
-		System.out.println(en);
-		for (int i=0; i<en.size(); i++) {
+		workingList.removeAll(en);
+		System.out.println("lista: " + en);
+		/*for (int i=0; i<en.size(); i++) {
 			Iterator itr = workingList.iterator(); 
 	        while (itr.hasNext()) 
 	        { 
 	        	if (en.get(i).equals((Entity) itr.next()))
-	        		System.out.println(en.get(i));
-	        		System.out.println((Entity) itr.next());
+	        		System.out.println("en: " + en.get(i));
+	        		System.out.println("it: " + (Entity) itr.next());
 	        		itr.remove();  
 	        } 
-		}
+		}*/
 	}
 	
 	public void deleteEntity(Entity en) {
