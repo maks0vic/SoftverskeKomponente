@@ -27,6 +27,7 @@ public class DataRepositoryCustom extends Storage{
 		try {        
 			createConfig();	
 			ArrayList <MyFile> files = (ArrayList<MyFile>) this.getFiles();
+			System.out.println("kolko fajlova " + getFiles().size());
 			ArrayList <Entity> pom = new ArrayList<Entity>();
 			ArrayList <Entity> pomList = new ArrayList<Entity>();
 			pom.addAll(getWorkingList());
@@ -53,6 +54,7 @@ public class DataRepositoryCustom extends Storage{
 				objectOutputStream.writeObject(pomList);
 				objectOutputStream.close();
 				System.out.println("zavrsio save");
+				System.out.println("kolko fajlova " + getFiles().size());
       
 		}
 		catch (Exception e ) {
@@ -77,6 +79,7 @@ public class DataRepositoryCustom extends Storage{
 				System.out.println("enList size: " + enList.size());
 				this.addFile(new MyFile("f",enList));			
 			}		
+			System.out.println("kolko fajlova " + getFiles().size());
 			this.loadEntities();	
 			System.out.println("zavrsio load");
 			System.out.println(getWorkingList());

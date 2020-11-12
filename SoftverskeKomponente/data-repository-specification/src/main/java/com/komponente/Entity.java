@@ -1,5 +1,6 @@
 package com.komponente;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -9,7 +10,7 @@ import java.util.Random;
  * @author ivan
  *
  */
-public class Entity {
+public class Entity implements Serializable{
 	private String name;
 	private String ID; 
 	private Map <String, String> mapa;

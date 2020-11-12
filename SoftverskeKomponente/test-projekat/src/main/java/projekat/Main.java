@@ -88,19 +88,20 @@ public class Main {
 		/*DataRepositoryJson myStorage = new DataRepositoryJson(saveAddress, myFileList, "JSON", 5);		
 		myStorage.save();
 		
-		/*DataRepositoryJson newStorage = new DataRepositoryJson(loadAddress);
-		newStorage.readConfig(newStorage.getAdress());
-		newStorage.load();*/
+
 
 		
 		/*DataRepositoryYaml myStorage = new DataRepositoryYaml(saveAddress, myFileList, "YAML", 5);		
 		myStorage.save();*/
 		
-		DataRepositoryCustom myStorage = new DataRepositoryCustom(saveAddress, myFileList, "CUSTOM", 5);		
+		/*DataRepositoryCustom myStorage = new DataRepositoryCustom(saveAddress, myFileList, "CUSTOM", 5);		
 		myStorage.save();
-		myStorage.load();
 		
-		//MainFrame.getInstance();
+		/*DataRepositoryCustom newStorage = new DataRepositoryCustom(saveAddress);
+		newStorage.readConfig(newStorage.getAdress());
+		newStorage.load();*/
+		
+		MainFrame.getInstance();
 	}
 
 }
