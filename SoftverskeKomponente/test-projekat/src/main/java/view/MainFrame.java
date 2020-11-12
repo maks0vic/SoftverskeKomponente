@@ -25,6 +25,7 @@ import com.komponente.Storage;
 
 import actions.AddDialogAction;
 import actions.CreateNewRepositoryAction;
+import actions.DeleteAction;
 import actions.OpenFileChooserAction;
 import actions.SortDialogAction;
 
@@ -47,7 +48,6 @@ public class MainFrame extends JFrame{
 	private JButton createButton;
 	
 	private MainFrame() {
-		storage = new DataRepositoryJson("");
 		setSize(800,600);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLocationRelativeTo(null);
@@ -59,7 +59,7 @@ public class MainFrame extends JFrame{
 		addEntityButton = new JButton("Add");
 	//	addEntityButton.setEnabled(false);
 		deleteButton = new JButton("Delete");
-		deleteButton.setEnabled(false);
+	//	deleteButton.setEnabled(false);
 		searchButton = new JButton("Search");
 		searchButton.setEnabled(false);
 		sortButton = new JButton("Sort");
@@ -169,6 +169,7 @@ public class MainFrame extends JFrame{
 				
 			}
 		});
+		deleteButton.addActionListener(new DeleteAction());
 	}
 
 	public void setStorage(Storage storage) {
@@ -179,13 +180,10 @@ public class MainFrame extends JFrame{
 	}
 	//set
 	public void setDataRepository(String dp) {
-		this.dataRepositoryPath = dp + "\\" ;
+		this.dataRepositoryPath = dp;
 		storage = new DataRepositoryJson(dataRepositoryPath);
 		storage.readConfig(storage.getAdress());
 		storage.load();
-		System.out.println(storage.getMaxEntities());
-		System.out.println(storage.getStorageType());
-		System.out.println(storage.getWorkingList().size());
 		enableButtons();
 		refresh();
 	}
@@ -217,5 +215,13 @@ public class MainFrame extends JFrame{
 			this.addToTable(e);
 		}
 		
+	}
+	
+	public DefaultTableModel getTableModel() {
+		return tableModel;
+	}
+	
+	public JTable getTable() {
+		return table;
 	}
 }

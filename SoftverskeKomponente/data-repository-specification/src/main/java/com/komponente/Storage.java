@@ -145,7 +145,7 @@ public abstract class Storage {
 	    else return getGeneratedID();
 	}
 	
-	private void deleteEntityList(List<Entity> en) {
+	public void deleteEntityList(List<Entity> en) {
 		for (int i=0; i<en.size(); i++) {
 			Iterator itr = workingList.iterator(); 
 	        while (itr.hasNext()) 
@@ -156,7 +156,7 @@ public abstract class Storage {
 		}
 	}
 	
-	private void deleteEntity(Entity en) {
+	public void deleteEntity(Entity en) {
 		Iterator itr = workingList.iterator(); 
         while (itr.hasNext()) 
         { 
