@@ -177,6 +177,7 @@ public class MainFrame extends JFrame{
 		System.out.println(storage.getStorageType());
 		System.out.println(storage.getWorkingList().size());
 		enableButtons();
+		refresh();
 	}
 	
 	public void createNewRepository(String dataRepositoryPath, int maxEntities) {
@@ -184,6 +185,7 @@ public class MainFrame extends JFrame{
 		storage.setMaxEntities(maxEntities);
 		storage.setStorageType("JSON");
 		enableButtons();
+		refresh();
 	}
 	
 	public void enableButtons() {
