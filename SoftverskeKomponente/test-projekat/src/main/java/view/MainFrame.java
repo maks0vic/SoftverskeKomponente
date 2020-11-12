@@ -24,6 +24,7 @@ import com.komponente.Entity;
 import com.komponente.Storage;
 
 import actions.AddDialogAction;
+import actions.CreateNewRepositoryAction;
 import actions.OpenFileChooserAction;
 import actions.SortDialogAction;
 
@@ -159,6 +160,7 @@ public class MainFrame extends JFrame{
 		openDataRepositoryButton.addActionListener(new OpenFileChooserAction());
 		addEntityButton.addActionListener(new AddDialogAction());
 		sortButton.addActionListener(new SortDialogAction());
+		createButton.addActionListener(new CreateNewRepositoryAction());
 	}
 
 	public void setStorage(Storage storage) {
