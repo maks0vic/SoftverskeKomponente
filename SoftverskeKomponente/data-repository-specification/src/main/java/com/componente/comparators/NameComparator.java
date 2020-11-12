@@ -4,6 +4,12 @@ import java.util.Comparator;
 
 import com.komponente.Entity;
 
+
+/**
+ * Comparator that compares two entities by name.
+ * @author ivan
+ *
+ */
 public class NameComparator implements Comparator<Entity>{
 
 	@Override
