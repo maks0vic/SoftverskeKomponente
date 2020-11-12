@@ -168,7 +168,7 @@ public abstract class Storage {
 		
 	}
 
-	public abstract void save(Object object);
+	public abstract void save();
 	public abstract void load();
 	
 	public void addFile(MyFile mf) {

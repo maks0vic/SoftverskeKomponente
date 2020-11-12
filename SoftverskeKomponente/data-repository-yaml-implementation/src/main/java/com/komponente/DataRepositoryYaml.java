@@ -24,10 +24,10 @@ public class DataRepositoryYaml extends Storage{
 	}
 
 	@Override
-	public void save(Object object) {
+	public void save() {
 		try {			
 			createConfig();			
-			DataRepositoryYaml stor = (DataRepositoryYaml) object;
+			DataRepositoryYaml stor = (DataRepositoryYaml) this;
 			ArrayList <MyFile> files = (ArrayList<MyFile>) stor.getFiles();
 			ArrayList <Entity> pom = new ArrayList<Entity>();
 			ArrayList <Entity> pomList = new ArrayList<Entity>();

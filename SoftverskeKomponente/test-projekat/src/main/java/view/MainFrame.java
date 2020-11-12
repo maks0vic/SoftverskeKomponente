@@ -161,6 +161,14 @@ public class MainFrame extends JFrame{
 		addEntityButton.addActionListener(new AddDialogAction());
 		sortButton.addActionListener(new SortDialogAction());
 		createButton.addActionListener(new CreateNewRepositoryAction());
+		saveButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				storage.save();
+				
+			}
+		});
 	}
 
 	public void setStorage(Storage storage) {
@@ -196,7 +204,7 @@ public class MainFrame extends JFrame{
 		searchButton.setEnabled(true);
 		saveButton.setEnabled(true);
 		deleteButton.setEnabled(true);
-		
+
 	}
 	
 	public Storage getStorage() {

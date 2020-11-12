@@ -26,9 +26,9 @@ public class DataRepositoryCustom extends Storage{
 	
 	
 	@Override
-	public void save(Object object) {
+	public void save() {
 		try {
-			  DataRepositoryCustom drc = (DataRepositoryCustom) object;
+			  DataRepositoryCustom drc = (DataRepositoryCustom) this;
 		      List<MyFile> filovi = new ArrayList<MyFile>();
 		      filovi = drc.getFiles();
 		      for (MyFile f : filovi) {

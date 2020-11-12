@@ -21,10 +21,10 @@ public class DataRepositoryJson extends Storage{
 		super(adress, files, storageType, maxEntities);
 	}
 
-	public void save(Object object) {
+	public void save() {
 		try {			
 			createConfig();			
-			DataRepositoryJson stor = (DataRepositoryJson) object;
+			DataRepositoryJson stor = (DataRepositoryJson)this;
 			ArrayList <MyFile> files = (ArrayList<MyFile>) stor.getFiles();
 			ArrayList <Entity> pom = new ArrayList<Entity>();
 			ArrayList <Entity> pomList = new ArrayList<Entity>();
