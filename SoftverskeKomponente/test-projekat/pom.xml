@@ -7,7 +7,7 @@
   	<dependencies>
 		<dependency>
 			<groupId>com.komponente.projekat</groupId>
-			<artifactId>data-repository-json-implementation</artifactId>
+			<artifactId>data-repository-custom-implmentation</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	

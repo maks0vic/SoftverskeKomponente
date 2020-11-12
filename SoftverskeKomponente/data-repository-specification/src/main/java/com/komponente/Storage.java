@@ -134,6 +134,7 @@ public abstract class Storage {
 	public void loadEntities ( ) {
 		for (int i=0; i < files.size(); i++) {
 			MyFile f = files.get(i);
+			System.out.println("file size u loadEn : " + f.getEntityList().size());
 			for (Entity e : f.getEntityList()) 
 				workingList.add(e);
 		}
@@ -432,11 +433,8 @@ public abstract class Storage {
 					if(e.getEnMapa().get(key).getMapa().get(key2).equals(valueForSearch)) {
 						if(!toReturn.contains(e))toReturn.add(e);
 					}
-					
 				}
 			}
-			
-			
 		}
 		return toReturn;
 	}

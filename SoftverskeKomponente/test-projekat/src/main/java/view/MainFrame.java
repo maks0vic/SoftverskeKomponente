@@ -20,7 +20,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
-import com.komponente.DataRepositoryJson;
+//import com.komponente.DataRepositoryJson;
+//import com.komponente.DataRepositoryYaml;
+import com.komponente.DataRepositoryCustom;
+
 import com.komponente.Entity;
 import com.komponente.Storage;
 
@@ -197,7 +200,9 @@ public class MainFrame extends JFrame{
 	//set
 	public void setDataRepository(String dp) {
 		this.dataRepositoryPath = dp;
-		storage = new DataRepositoryJson(dataRepositoryPath);
+		//storage = new DataRepositoryJson(dataRepositoryPath);
+		//storage = new DataRepositoryYaml(dataRepositoryPath);
+		storage = new DataRepositoryCustom(dataRepositoryPath);
 		if (storage.readConfig(storage.getAdress()) ) {
 			storage.load();
 			enableButtons();
@@ -211,7 +216,9 @@ public class MainFrame extends JFrame{
 	}
 	
 	public void createNewRepository(String dataRepositoryPath, int maxEntities) {
-		storage = new DataRepositoryJson(dataRepositoryPath);
+		//storage = new DataRepositoryJson(dataRepositoryPath);
+		//storage = new DataRepositoryYaml(dataRepositoryPath);
+		storage = new DataRepositoryCustom(dataRepositoryPath);
 		storage.setMaxEntities(maxEntities);
 		storage.setStorageType("JSON");
 		enableButtons();

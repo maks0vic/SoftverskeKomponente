@@ -84,7 +84,6 @@ public class Main {
 		
 		File pom = new File("");
 		String saveAddress = pom.getAbsolutePath();
-		String loadAddress = "C:\\Users\\StefanMaksovic\\git\\repository\\data-repository-specification\\SoftverskeKomponente\\test-projekat\\";
 		
 		/*DataRepositoryJson myStorage = new DataRepositoryJson(saveAddress, myFileList, "JSON", 5);		
 		myStorage.save();
@@ -95,9 +94,13 @@ public class Main {
 
 		
 		/*DataRepositoryYaml myStorage = new DataRepositoryYaml(saveAddress, myFileList, "YAML", 5);		
-		myStorage.save(myStorage);*/
+		myStorage.save();*/
 		
-		MainFrame.getInstance();
+		DataRepositoryCustom myStorage = new DataRepositoryCustom(saveAddress, myFileList, "CUSTOM", 5);		
+		myStorage.save();
+		myStorage.load();
+		
+		//MainFrame.getInstance();
 	}
 
 }

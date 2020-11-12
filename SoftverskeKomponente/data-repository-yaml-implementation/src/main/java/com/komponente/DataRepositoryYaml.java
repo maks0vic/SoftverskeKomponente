@@ -77,4 +77,10 @@ public class DataRepositoryYaml extends Storage{
 		}
 	}
 
+	@Override
+	public boolean checkType(String s) {
+		if (s.equals("YAML")) return true;
+		return false;
+	}
+
 }
