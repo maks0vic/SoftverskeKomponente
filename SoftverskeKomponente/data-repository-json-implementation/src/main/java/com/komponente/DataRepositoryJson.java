@@ -24,10 +24,10 @@ public class DataRepositoryJson extends Storage{
 	public void save() {
 		try {			
 			createConfig();			
-			DataRepositoryJson stor = (DataRepositoryJson)this;
-			ArrayList <MyFile> files = (ArrayList<MyFile>) stor.getFiles();
+			ArrayList <MyFile> files = (ArrayList<MyFile>) this.getFiles();
 			ArrayList <Entity> pom = new ArrayList<Entity>();
 			ArrayList <Entity> pomList = new ArrayList<Entity>();
+			pom.addAll(getWorkingList());
 			for (int i=0; i < files.size(); i++) {
 				MyFile f = files.get(i);
 				pom.addAll(f.getEntityList());
@@ -50,7 +50,6 @@ public class DataRepositoryJson extends Storage{
 			throw new RuntimeException("Problem with saving document");
 		}
 	}
-	
 	
 	public void load() {
 		try {						

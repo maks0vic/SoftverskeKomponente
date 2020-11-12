@@ -64,8 +64,6 @@ public abstract class Storage {
 		for(Entity e: workingList) {
 			if(e.getID().equals(id))return e;
 		}
-		
-		
 		return null;
 		
 	}
@@ -94,7 +92,7 @@ public abstract class Storage {
 	
 	public void readConfig (String adress) {
 		ArrayList <String> config = new ArrayList<String>(); 	
-		try (BufferedReader br = new BufferedReader(new FileReader(adress+"config.txt"))) {			
+		try (BufferedReader br = new BufferedReader(new FileReader(adress+"\\config.txt"))) {			
 			String st; 			
 			while ((st = br.readLine()) != null) {
 			  config.add(st);
@@ -109,10 +107,10 @@ public abstract class Storage {
 	
 	public void createConfig() {
 		try {
-			File cnfg = new File("config.txt");
+			File cnfg = new File(this.adress + "\\config.txt");
 			cnfg.createNewFile();
 			
-		      FileWriter myWriter = new FileWriter("config.txt");
+		      FileWriter myWriter = new FileWriter(this.adress + "\\config.txt");
 		      myWriter.write(storageType + "\n");
 		      myWriter.write("" + maxEntities);
 		      myWriter.close();
