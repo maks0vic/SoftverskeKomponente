@@ -28,8 +28,6 @@ public class DataRepositoryJson extends Storage{
 			ArrayList <MyFile> files = (ArrayList<MyFile>) stor.getFiles();
 			ArrayList <Entity> pom = new ArrayList<Entity>();
 			ArrayList <Entity> pomList = new ArrayList<Entity>();
-			
-			
 			for (int i=0; i < files.size(); i++) {
 				MyFile f = files.get(i);
 				pom.addAll(f.getEntityList());

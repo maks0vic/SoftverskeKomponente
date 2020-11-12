@@ -25,21 +25,33 @@ public class DataRepositoryYaml extends Storage{
 
 	@Override
 	public void save(Object object) {
-		
 		try {			
 			createConfig();			
 			DataRepositoryYaml stor = (DataRepositoryYaml) object;
 			ArrayList <MyFile> files = (ArrayList<MyFile>) stor.getFiles();
+			ArrayList <Entity> pom = new ArrayList<Entity>();
+			ArrayList <Entity> pomList = new ArrayList<Entity>();
 			for (int i=0; i < files.size(); i++) {
 				MyFile f = files.get(i);
-				File u = new File(adress + f.getFileName() + ".yaml");
-				objectMapper.writeValue(u ,  f.getEntityList());												
-			}			
+				pom.addAll(f.getEntityList());
+			}
+			int j = 0;
+			int m = getMaxEntities();
+			File u = new File(adress + "\\" + j + ".yaml");
+			for (int i=0; i < pom.size(); i++) {
+				pomList.add(pom.get(i));
+				if ( i % m == m - 1) {
+					j++;
+					objectMapper.writerWithDefaultPrettyPrinter().writeValue(u , pomList);
+					pomList.clear();
+					u = new File(adress + "\\" + j + ".yaml");
+				}
+				objectMapper.writerWithDefaultPrettyPrinter().writeValue(u , pomList);
+			}		
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("Problem with saving document");
 		}
-		
 	}
 
 	@Override
@@ -52,15 +64,16 @@ public class DataRepositoryYaml extends Storage{
 			        return name.endsWith(".yaml");
 			    }
 			});
-			for (File yamlfile : files) {
-				List<Entity> enList = objectMapper.readValue(yamlfile, new TypeReference<List<Entity>>() {});
-				this.addFile(new MyFile("f", enList));
-			    }			
+			for (File jsonfile : files) {
+				List<Entity> enList = objectMapper.readValue(jsonfile, new TypeReference<List<Entity>>() {});
+				this.addFile(new MyFile("f",enList));
+			
+			}		
+			this.loadEntities();			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("Problem with loading document");
 		}
-		
 	}
 
 }
