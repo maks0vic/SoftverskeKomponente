@@ -168,6 +168,7 @@ public class AddDialog extends JDialog{
 				try {
 					String key;
 					String value;
+				
 					
 					key = keyTextField2.getText();
 					if(key.equals(""))return;
@@ -175,6 +176,9 @@ public class AddDialog extends JDialog{
 					if(value.equals(""))return;
 					
 					if(mapa2.containsKey(key))return;
+					if(!MainFrame.getInstance().getStorage().checkID(value))return;
+					Entity e = MainFrame.getInstance().getStorage().getEntityByID(value);
+					if(!e.getName().equals(key))return;
 					
 					keyTextField2.setText("");
 					valueTextField2.setText("");
@@ -241,17 +245,28 @@ public class AddDialog extends JDialog{
 				if(idTextField.isEnabled())id = idTextField.getText();
 				if(MainFrame.getInstance().getStorage().checkID(id))return;
 				
+				Map<String, String> mapToReturn = new HashMap<>();
 				Map<String, Entity> enMapToReturn = new HashMap<>();
 				
+				if(!mapa1.isEmpty()) {
+					for(Map.Entry<String, String> entry: mapa1.entrySet()) {
+						mapToReturn.put(entry.getKey(), entry.getValue());
+					}
+				}
+				
+			
 				if(!mapa2.isEmpty()) {
 					for(Map.Entry<String, String> entry: mapa2.entrySet()) {
 						enMapToReturn.put(entry.getKey(), MainFrame.getInstance().getStorage().getEntityByID(entry.getValue()));
 					}
 				}
 				
-				MainFrame.getInstance().getStorage().addEntity(name, id, mapa1, enMapToReturn);
+				MainFrame.getInstance().getStorage().addEntity(name, id, mapToReturn, enMapToReturn);
 				MainFrame.getInstance().refresh();
 				
+				
+				mapa1.clear();
+				mapa2.clear();
 				nameTextField.setText("");
 				idTextField.setText("");
 				listModel1.removeAllElements();

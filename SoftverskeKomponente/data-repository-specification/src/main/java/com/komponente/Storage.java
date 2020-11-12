@@ -198,10 +198,12 @@ public abstract class Storage {
 		if(sort.equals(SortBy.NAME)) {
 			Collections.sort(workingList, new NameComparator());
 			if(order.equals(Order.DESC))Collections.reverse(workingList);
+			
 		}
 		if(sort.equals(SortBy.ID)) {
 			Collections.sort(workingList, new IDComparator());
 			if(order.equals(Order.DESC))Collections.reverse(workingList);
+		
 		}
 	}
 	

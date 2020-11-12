@@ -25,6 +25,7 @@ import com.komponente.Storage;
 
 import actions.AddDialogAction;
 import actions.OpenFileChooserAction;
+import actions.SortDialogAction;
 
 public class MainFrame extends JFrame{
 	
@@ -33,7 +34,7 @@ public class MainFrame extends JFrame{
 	private JTable table;
 	private Dimension screenSize;
 	private JButton addEntityButton;
-	private JButton deleteSelectedEntitiesButton;
+	private JButton deleteButton;
 	private JButton searchButton;
 	private JButton sortButton;
 	private JToolBar toolbar;
@@ -41,6 +42,8 @@ public class MainFrame extends JFrame{
 	private JButton openDataRepositoryButton;
 	private String dataRepositoryPath;
 	private Storage storage;
+	private JButton saveButton;
+	private JButton createButton;
 	
 	private MainFrame() {
 		storage = new DataRepositoryJson("");
@@ -53,18 +56,30 @@ public class MainFrame extends JFrame{
 		setTitle("Projekat");
 		
 		addEntityButton = new JButton("Add");
-		deleteSelectedEntitiesButton = new JButton("Delete selected");
+	//	addEntityButton.setEnabled(false);
+		deleteButton = new JButton("Delete");
+		deleteButton.setEnabled(false);
 		searchButton = new JButton("Search");
+		searchButton.setEnabled(false);
 		sortButton = new JButton("Sort");
+	//	sortButton.setEnabled(false);
 		openDataRepositoryButton = new JButton("Open data repository");
 		toolbar = new JToolBar();
+		saveButton = new JButton("Save");
+		saveButton.setEnabled(false);
+		createButton = new JButton("Create new repository");
+		
 		
 		toolbar.addSeparator(new Dimension(30, 20));
 		toolbar.add(openDataRepositoryButton);
 		toolbar.addSeparator(new Dimension(30, 20));
+		toolbar.add(createButton);
+		toolbar.addSeparator(new Dimension(30, 20));
+		toolbar.add(saveButton);
+		toolbar.addSeparator(new Dimension(30, 20));
 		toolbar.add(addEntityButton);
 		toolbar.addSeparator(new Dimension(30, 20));
-		toolbar.add(deleteSelectedEntitiesButton);
+		toolbar.add(deleteButton);
 		toolbar.addSeparator(new Dimension(30, 20));
 		toolbar.add(searchButton);
 		toolbar.addSeparator(new Dimension(30, 20));
@@ -143,6 +158,7 @@ public class MainFrame extends JFrame{
 	private void initActionListeners() {
 		openDataRepositoryButton.addActionListener(new OpenFileChooserAction());
 		addEntityButton.addActionListener(new AddDialogAction());
+		sortButton.addActionListener(new SortDialogAction());
 	}
 
 	public void setStorage(Storage storage) {
@@ -160,14 +176,23 @@ public class MainFrame extends JFrame{
 		System.out.println(storage.getMaxEntities());
 		System.out.println(storage.getStorageType());
 		System.out.println(storage.getWorkingList().size());
-		
+		enableButtons();
 	}
 	
 	public void createNewRepository(String dataRepositoryPath, int maxEntities) {
 		storage = new DataRepositoryJson(dataRepositoryPath);
 		storage.setMaxEntities(maxEntities);
 		storage.setStorageType("JSON");
-
+		enableButtons();
+	}
+	
+	public void enableButtons() {
+		addEntityButton.setEnabled(true);
+		sortButton.setEnabled(true);
+		searchButton.setEnabled(true);
+		saveButton.setEnabled(true);
+		deleteButton.setEnabled(true);
+		
 	}
 	
 	public Storage getStorage() {

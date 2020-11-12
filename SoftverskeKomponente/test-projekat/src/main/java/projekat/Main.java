@@ -70,12 +70,12 @@ public class Main {
 		myFileList.add(myFile1);
 		//myFileList.add(myFile2);
 		
-		File pom = new File("");
-		String saveAddress = pom.getAbsolutePath();
-		String loadAddress = "C:\\Users\\StefanMaksovic\\git\\repository\\data-repository-specification\\SoftverskeKomponente\\test-projekat\\";
+	//	File pom = new File("");
+	//	String saveAddress = pom.getAbsolutePath();
+	//	String loadAddress = "C:\\Users\\StefanMaksovic\\git\\repository\\data-repository-specification\\SoftverskeKomponente\\test-projekat\\";
 		
-		DataRepositoryJson myStorage = new DataRepositoryJson(saveAddress, myFileList, "JSON", 3);		
-		myStorage.save(myStorage);
+	//	DataRepositoryJson myStorage = new DataRepositoryJson(saveAddress, myFileList, "JSON", 3);		
+	//	myStorage.save(myStorage);
 		
 		/*DataRepositoryJson newStorage = new DataRepositoryJson(loadAddress);
 		newStorage.readConfig(newStorage.getAdress());

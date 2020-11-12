@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class SortDialog extends JDialog{
 	private JComboBox combo2;
 	private JPanel panel;
 	private JPanel buttonPanel;
-	private JButton cancelButton;
+
 	private JButton sortButton;
 	
 	
@@ -54,10 +56,8 @@ public class SortDialog extends JDialog{
 		combo2 = new JComboBox(enums2.toArray());
 		
 		sortButton = new JButton("Sort");
-		cancelButton = new JButton("Cancel");
 		buttonPanel = new JPanel();
 		buttonPanel.add(sortButton);
-		buttonPanel.add(cancelButton);
 		
 		panel = new JPanel();
 		panel.add(sortBy);
@@ -69,6 +69,18 @@ public class SortDialog extends JDialog{
 		add(panel, BorderLayout.NORTH);
 		add(buttonPanel, BorderLayout.SOUTH);
 		
+		
+		sortButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				SortBy sortBy = SortBy.valueOf(combo1.getSelectedItem().toString());
+				Order order = Order.valueOf(combo2.getSelectedItem().toString());
+				
+				MainFrame.getInstance().getStorage().sortWorkingList(sortBy, order);
+				MainFrame.getInstance().refresh();
+			}
+		});
 		validate();
 	}
 }
