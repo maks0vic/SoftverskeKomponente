@@ -146,7 +146,6 @@ public abstract class Storage {
 	}
 	
 	public void deleteEntityList(List<Entity> en) {
-		System.out.println(en);
 		for (int i=0; i<en.size(); i++) {
 			Iterator itr = workingList.iterator(); 
 	        while (itr.hasNext()) 

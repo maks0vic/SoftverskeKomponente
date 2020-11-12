@@ -30,8 +30,8 @@ public class DeleteAction implements ActionListener{
 		}
 		
 		if(entitiesToDelete.isEmpty())return;
-		
 		storage.deleteEntityList(entitiesToDelete);
+		
 		MainFrame.getInstance().refresh();
 	}
 
