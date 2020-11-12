@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -27,6 +28,7 @@ import actions.AddDialogAction;
 import actions.CreateNewRepositoryAction;
 import actions.DeleteAction;
 import actions.OpenFileChooserAction;
+import actions.SearchAndDeleteAction;
 import actions.SortDialogAction;
 
 public class MainFrame extends JFrame{
@@ -46,6 +48,7 @@ public class MainFrame extends JFrame{
 	private Storage storage;
 	private JButton saveButton;
 	private JButton createButton;
+	private JButton refresh;
 	
 	private MainFrame() {
 		setSize(800,600);
@@ -57,18 +60,20 @@ public class MainFrame extends JFrame{
 		setTitle("Projekat");
 		
 		addEntityButton = new JButton("Add");
-	//	addEntityButton.setEnabled(false);
+		addEntityButton.setEnabled(false);
 		deleteButton = new JButton("Delete");
-	//	deleteButton.setEnabled(false);
-		searchButton = new JButton("Search");
+		deleteButton.setEnabled(false);
+		searchButton = new JButton("Search and delete");
 		searchButton.setEnabled(false);
 		sortButton = new JButton("Sort");
-	//	sortButton.setEnabled(false);
+		sortButton.setEnabled(false);
 		openDataRepositoryButton = new JButton("Open data repository");
 		toolbar = new JToolBar();
 		saveButton = new JButton("Save");
 		saveButton.setEnabled(false);
 		createButton = new JButton("Create new repository");
+		refresh = new JButton("Refresh");
+		refresh.setEnabled(false);
 		
 		
 		toolbar.addSeparator(new Dimension(30, 20));
@@ -85,6 +90,8 @@ public class MainFrame extends JFrame{
 		toolbar.add(searchButton);
 		toolbar.addSeparator(new Dimension(30, 20));
 		toolbar.add(sortButton);
+		toolbar.addSeparator(new Dimension(30, 20));
+		toolbar.add(refresh);
 		toolbar.setOrientation(javax.swing.SwingConstants.VERTICAL);
 		
 		toolbar.setFloatable(false);
@@ -170,6 +177,15 @@ public class MainFrame extends JFrame{
 			}
 		});
 		deleteButton.addActionListener(new DeleteAction());
+		searchButton.addActionListener(new SearchAndDeleteAction());
+		refresh.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				refresh();
+				
+			}
+		});
 	}
 
 	public void setStorage(Storage storage) {
@@ -187,7 +203,9 @@ public class MainFrame extends JFrame{
 			enableButtons();
 		}
 		else {
-				// mozda neki pop up sta znam
+			String title = "Wrong type";
+			String message = "Repository not compatible with application.";
+			JOptionPane.showMessageDialog(MainFrame.getInstance(), message, title, JOptionPane.ERROR_MESSAGE);
 		}
 		refresh();
 	}
@@ -206,6 +224,7 @@ public class MainFrame extends JFrame{
 		searchButton.setEnabled(true);
 		saveButton.setEnabled(true);
 		deleteButton.setEnabled(true);
+		refresh.setEnabled(true);
 
 	}
 	
