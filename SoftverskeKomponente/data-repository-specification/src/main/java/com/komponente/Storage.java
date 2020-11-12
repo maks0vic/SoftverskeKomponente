@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -144,6 +145,27 @@ public abstract class Storage {
 	    if (!checkID("" + int_random))
 	    	return "" + int_random;
 	    else return getGeneratedID();
+	}
+	
+	private void deleteEntityList(List<Entity> en) {
+		for (int i=0; i<en.size(); i++) {
+			Iterator itr = workingList.iterator(); 
+	        while (itr.hasNext()) 
+	        { 
+	        	if (en.get(i).equals((Entity) itr))
+	        		itr.remove();  
+	        } 
+		}
+	}
+	
+	private void deleteEntity(Entity en) {
+		Iterator itr = workingList.iterator(); 
+        while (itr.hasNext()) 
+        { 
+        	if (en.equals((Entity) itr))
+        		itr.remove();  
+        } 
+		
 	}
 
 	public abstract void save(Object object);

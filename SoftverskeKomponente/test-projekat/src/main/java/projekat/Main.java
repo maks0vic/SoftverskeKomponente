@@ -38,6 +38,12 @@ public class Main {
 		
 		Map <String, String> enMapa8 = new HashMap<>();
 		enMapa8.put("mango", "zelena");
+		
+		Map <String, String> enMapa9 = new HashMap<>();
+		enMapa9.put("tresnja", "crvena");
+		
+		Map <String, String> enMapa10 = new HashMap<>();
+		enMapa10.put("paradajz", "crvena");
 			
 		Entity en1 = new Entity("Stefan", "001", enMapa1);
 		Entity en2 = new Entity("Ivan", "002", enMapa2);
@@ -47,6 +53,11 @@ public class Main {
 		Entity en6 = new Entity("Stole", "006", enMapa6);
 		Entity en7 = new Entity("Fica", "007", enMapa7);
 		Entity en8 = new Entity("Majkic", "008", enMapa8);
+		Entity en9 = new Entity("Radoje", "009", enMapa9);
+		Entity en10 = new Entity("Miketa", "010", enMapa10);
+		
+		en1.addEntityToMap("vocka1", en9);
+		en1.addEntityToMap("vocka2", en10);
 		
 		//**//
 		
@@ -65,17 +76,18 @@ public class Main {
 		myFile1.addEntity(en6);
 		myFile1.addEntity(en7);
 		myFile1.addEntity(en8);
+
 		
 		List<MyFile> myFileList = new ArrayList<>();
 		myFileList.add(myFile1);
 		//myFileList.add(myFile2);
 		
-	//	File pom = new File("");
-	//	String saveAddress = pom.getAbsolutePath();
-	//	String loadAddress = "C:\\Users\\StefanMaksovic\\git\\repository\\data-repository-specification\\SoftverskeKomponente\\test-projekat\\";
+		/*File pom = new File("");
+		String saveAddress = pom.getAbsolutePath();
+		String loadAddress = "C:\\Users\\StefanMaksovic\\git\\repository\\data-repository-specification\\SoftverskeKomponente\\test-projekat\\";
 		
-	//	DataRepositoryJson myStorage = new DataRepositoryJson(saveAddress, myFileList, "JSON", 3);		
-	//	myStorage.save(myStorage);
+		DataRepositoryJson myStorage = new DataRepositoryJson(saveAddress, myFileList, "JSON", 5);		
+		myStorage.save(myStorage);
 		
 		/*DataRepositoryJson newStorage = new DataRepositoryJson(loadAddress);
 		newStorage.readConfig(newStorage.getAdress());
